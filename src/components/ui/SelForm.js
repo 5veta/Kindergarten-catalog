@@ -5,8 +5,8 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {withRouter} from 'react-router';
 import imgbg from '../../images/bg6.jpg';
 
-const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f=>f, changeloc=f=>f, lang})=>{
-    
+const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f=>f, changeloc=f=>f, match, lang})=>{
+    console.log('MATCH: '+ match.cids+' '+ match.regids );
     return(
        
         <form>
@@ -15,7 +15,7 @@ const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f
                     <select  onChange={changec}  className="custom-select" style={{borderColor: "#3b5f82"}}>
                         <option>{lang.country}</option>
                         {countries.map((val, i)=>
-                            <option key={i} value={val.cid} >{val.name}</option>
+                            <option selected={String(val.cid)===match.cids?true:false} key={val.cid} value={val.cid} >{val.name}</option>
                         )}
                     </select>
                 </div>
@@ -23,7 +23,7 @@ const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f
                     <select  className="custom-select"  onChange={changereg} style={{borderColor: "#3b5f82"}}>
                         <option >{lang.region}</option>
                         {   regions.map((val, i)=>
-                            <option key={i} value={val.rid} >{val.name}</option>
+                            <option selected={(String(val.rid)===match.regids)?true:false} key={val.rid} value={val.rid} >{val.name}</option>
                         )}
                     </select>
                 </div>
@@ -36,7 +36,7 @@ const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f
                                 
                                     {
                                         v.locations.map((vl,y)=>
-                                            <option key={y} value={vl.lid} >{vl.name}</option>
+                                            <option selected={(String(vl.lid)===match.locids)?true:false} key={vl.lid} value={vl.lid} >{vl.name}</option>
                                         )
                                     }
                                 
@@ -123,7 +123,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
         <h3 className="mt-2" style={{color: "#3b5f82", fontFamily: "Serif"}}>{lang.maineheader}</h3>
         </div>
         <div className="flex-row p-2  col-10">
-            <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} lang={lang.form} />
+            <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang.form} />
         {(rdiloc.length>0)?
             <Kgardens kgardens={kgardens} lang={lang.kgs} />:<div></div>
         }   

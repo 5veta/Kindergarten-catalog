@@ -61,13 +61,29 @@ export const oneKgarden=(state, props)=>{
 };
 
 export const filterRegions=(state, pcity)=>{
-     
+     console.log('pcity: '+pcity);
     if(pcity!==undefined){
         let countryarr=pcity.split("-");
         
-        let resarr=[].concat(...countryarr.map(cid=>state.regions.filter(v=>String(v.cid)===String(cid))));
+        //let regionsres=[].concat(...countryarr.map(cid=>state.regions.filter(v=>String(v.cid)===String(cid)))));
+        let streets=state.kgardens.map(kg=>state.streets.filter(st=>st.sid===kg.address.sid)[0]);
+        //console.log('streets'+JSON.stringify(streets));
+        let locations=state.locations.map(st=>{let arr=streets.filter(loc=>loc.lid===st.lid); return (arr.length>0)?arr[0]:0;}).filter(v=>v!==0).map(str=>state.locations.filter(l=>l.lid===str.lid)[0]);
         
-        return resarr;
+       
+        //console.log('locations'+JSON.stringify(locations));
+        let regiondistricts=state.regiondistricts.map(regd=>{let arr=locations.filter(loc=>loc.rdid===regd.rdid); return (arr.length>0)?arr[0]:0;}).filter(v=>v!==0).map(lc=>state.regiondistricts.filter(v=>v.rdid===lc.rdid)[0]);
+       // console.log('regiondistricts'+JSON.stringify(regiondistricts));
+        let regions=state.regions.map(reg=>{let arr=regiondistricts.filter(regd=>regd.rid===reg.rid); return (arr.length>0)?arr[0]:0;}).filter(v=>v!==0).map(rd=>state.regions.filter(v=>v.rid===rd.rid)[0]);
+        //let regions=[].concat(...regiondistricts.map(regd=>state.regions.filter(reg=>reg.rid===regd.rid)));
+        //console.log('regions'+JSON.stringify(regions));
+       // console.log('\n countryarr'+JSON.stringify(countryarr));
+        //let resarr=[].concat(...regions.map(cid=>regions.filter(r=>String(r.cid)===cid)));
+        //console.log('resarr'+JSON.stringify(resarr));
+        let resarr=[].concat(...countryarr.map(cid=>regions.filter(reg=>String(reg.cid)===cid)));
+        //console.log('resarr'+JSON.stringify(resarr));
+       // return resarr;
+       return resarr;
     }
     else{
         return [];
@@ -77,8 +93,17 @@ export const filterRegions=(state, pcity)=>{
 export const filterLocation=(state, pregions)=>{
     if(pregions!==undefined){
         let regsarr=pregions.split("-");
-        let rdarr=[].concat(...regsarr.map(rid=>state.regiondistricts.filter(v=>String(v.rid)===rid)));
-        let rdandlocarr=rdarr.map(v=>{let locarr=state.locations.filter(vlc=>String(vlc.rdid)===String(v.rdid)); return {regdist: v, locations: locarr}; });
+        
+        let streets=state.kgardens.map(kg=>state.streets.filter(st=>st.sid===kg.address.sid)[0]);
+        //console.log('streets'+JSON.stringify(streets));
+        let locations=state.locations.map(st=>{let arr=streets.filter(loc=>loc.lid===st.lid); return (arr.length>0)?arr[0]:0;}).filter(v=>v!==0).map(str=>state.locations.filter(l=>l.lid===str.lid)[0]);
+        //console.log('locations'+JSON.stringify(locations));
+        let regiondistricts=state.regiondistricts.map(regd=>{let arr=locations.filter(loc=>loc.rdid===regd.rdid); return (arr.length>0)?arr[0]:0;}).filter(v=>v!==0).map(lc=>state.regiondistricts.filter(v=>v.rdid===lc.rdid)[0]);
+        //console.log('regiondistricts'+JSON.stringify(regiondistricts));
+        let rdandlocarr=regiondistricts.map(v=>{let locarr=locations.filter(vlc=>String(vlc.rdid)===String(v.rdid)); return {regdist: v, locations: locarr}; });
+        //let rdarr=[].concat(...regsarr.map(rid=>state.regiondistricts.filter(v=>String(v.rid)===rid)));
+        //let rdandlocarr=rdarr.map(v=>{let locarr=state.locations.filter(vlc=>String(vlc.rdid)===String(v.rdid)); return {regdist: v, locations: locarr}; });
+        //let resarr=rdandlocarr.filter(r=>r.locations.length>0);
         let resarr=rdandlocarr.filter(r=>r.locations.length>0);
         return resarr;
     }
