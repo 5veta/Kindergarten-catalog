@@ -4,7 +4,7 @@ const DropdownMenu=({items, selectedItem, selItem=f=>f})=>{
     
     return(
         <div className="dropdown">
-            <button className="btn dropdown-toggle" style={{background: "#3b5f82", color: "white"}} type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button className="btn dropdown-toggle mbuttons" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {selectedItem}
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu2">

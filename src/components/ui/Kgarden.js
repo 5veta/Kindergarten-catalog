@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import { withRouter } from 'react-router';
 
 const KgContacts=({site, phonenumber, address, lang})=>{
     //console.log("phonenumber"+JSON.stringify(phonenumber));
@@ -106,7 +106,7 @@ KgDescription.propTypes={
 };
 
 
-export const Kgarden=({kgarden, lang})=>{
+const Kgarden=({kgarden, lang})=>{
     
     return(
     
@@ -134,13 +134,4 @@ Kgarden.propTypes={
     
 };
 
-
-export const KidsGarden=({kgarden, lang})=>{
-    return(
-        <div className="row justify-content-center">
-            <div className="flex-row p-2 col-6">
-                <Kgarden kgarden={kgarden} lang={lang} />
-            </div>
-        </div>
-    );    
-};
+export default withRouter(Kgarden);

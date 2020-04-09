@@ -26,13 +26,18 @@ const Kgardens=({kgardens=[], history, lang})=>{
                     {
                         kgardens.map((v, i)=>{
                             let y=require(`../../images/${v.kgid}.${ex[0]||ex[1]||ex[2]}`); 
-                            return (<tr key={v.kgid}>
+                            return (<tr key={v.kgid} >
                                 <th scope="col">{i+1}</th>
                                 
-                                <td><a onClick={()=>history.push(`/kgardens/${v.kgid}`)}>
-                                    <div>{v.name}</div>
-                                    <div classNames="mb-3 mt-3"><img  src={`/${v.kgid}.${ex[0]||ex[1]||ex[2]}`} style={{width: "200px", hieght: "100px"}}/></div></a></td>
-                                <td scope="col-4">{v.descr}</td>
+                                <td>
+                                    <Link to={`/kgardens/${v.kgid}`}>
+                                        <div>{v.name}</div>
+                                        <div classNames="mb-3 mt-3">
+                                            <img  src={`/${v.kgid}.${ex[0]||ex[1]||ex[2]}`} style={{width: "200px", hieght: "100px"}}/>
+                                        </div>
+                                    </Link>
+                                </td>
+                                <td scope="col-4 align-middle" ><div style={{height: "150px", overflow: "hidden", textOverflow: "ellipsis"}}>{v.descr}</div></td>
                                 <td>{v.site}</td>
                                 <td>{v.phonen.map((pn, k)=><p key={'pn'+k}><nobr>{pn}</nobr></p>)}</td>
                                 <td><nobr>{v.time.from+'-'+v.time.to}</nobr></td>

@@ -3,24 +3,26 @@ import {CountrySel, RegionSel} from '../containers.js';
 import Kgardens from './Kgardens';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {withRouter} from 'react-router';
-import imgbg from '../../images/bg6.jpg';
+import HeaderPicture from './HeaderPicture';
+import classNames from "classnames";
+import '../../../App.css';
 
-const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f=>f, changeloc=f=>f, match, lang})=>{
+const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f=>f, changeloc=f=>f, match, lang, classHandler=f=>f})=>{
     
     return(
        
         <form>
             <div className="flex-fill form-row mb-2">
                 <div className="col">
-                    <select  onChange={changec}  className="custom-select" style={{borderColor: "#3b5f82"}}>
+                    <select  onChange={changec}  className={classHandler(match.cids)} >
                         <option>{lang.country}</option>
                         {countries.map((val, i)=>
-                            <option selected={String(val.cid)===match.cids?true:false} key={val.cid} value={val.cid} >{val.name}</option>
+                            <option  selected={String(val.cid)===match.cids?true:false} key={val.cid} value={val.cid} >{val.name}</option>
                         )}
                     </select>
                 </div>
                 <div className="col">
-                    <select  className="custom-select"  onChange={changereg} style={{borderColor: "#3b5f82"}}>
+                    <select onChange={changereg}  className={classHandler(match.regids)} >
                         <option >{lang.region}</option>
                         {   regions.map((val, i)=>
                             <option selected={(String(val.rid)===match.regids)?true:false} key={val.rid} value={val.rid} >{val.name}</option>
@@ -29,7 +31,7 @@ const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f
                 </div>
                 
                 <div className="col">
-                    <select  className="custom-select"  onChange={changeloc} style={{borderColor: "#3b5f82"}} >
+                    <select  onChange={changeloc} className={classHandler(match.locids)} >
                         <option >{lang.location}</option>
                         { rdiloc.map((v, i)=>
                                 <optgroup key={i} data-id={JSON.stringify({regd: v.regdist.rdid})} label={v.regdist.name}  >
@@ -66,6 +68,15 @@ KgSelForm.propTypes={
 
 const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history, match, kgardens=[], lang})=>{
    
+    const classHandler=(matchv)=>{
+        let cn=classNames({
+        "custom-select text-success selform": matchv !== undefined,
+        "custom-select selform": matchv === undefined
+      });
+        console.log('cn: ', cn);
+        return cn;
+    };
+        
     const changec=(event)=>{
         let countriesl=event.target;
         let reg=new RegExp(`${lang.form.country}\\s*\\w*`);
@@ -123,11 +134,9 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
     
     return(
         <div className="row justify-content-center" >
-        <div className="col-12 mb-3 align-middle text-center pt-5 font-weight-bold text-secondary text-uppercase" style={{backgroundImage: `url(/bg6.jpg)`, height: "200px"}}>
-        <h3 className="mt-2" style={{color: "#3b5f82", fontFamily: "Serif"}}>{lang.maineheader}</h3>
-        </div>
+        <HeaderPicture lang={lang} />
         <div className="flex-row p-2  col-10">
-            <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang.form} />
+            <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang.form} classHandler={classHandler}/>
         {(rdiloc.length>0)?
             <Kgardens kgardens={kgardens} lang={lang.kgs} />:<div></div>
         }   

@@ -40,12 +40,12 @@ export const kgardensList=(state, regids, locids)=>{
 };
 
 export const oneKgarden=(state, props)=>{
-    //console.log('id: '+id+'\n props:'+JSON.stringify(props)+'\n');
+    console.log('\n props:'+JSON.stringify(props)+'\n');
    let id=props.match.params.id;
-   //console.log('id', id);
-   //console.log('props.match.path', props.match.path);
+   console.log('\n process.env: ', JSON.stringify(process.env));
+   //console.log('props.match.path: ', props.match.path);
    let kgardens=(props.match.path===`/admin/added/:id`)?state.useradm.newkglist:(props.match.path===`/accaunt/yourkg/:id`)?state.user.userskgs:state.kgardens;
-   //console.log('kgardens', kgardens);
+   //console.log('kgardens: ', JSON.stringify(kgardens));
    let kgarden=kgardens.filter(v=>String(v.kgid)===id)[0];
    let street=state.streets.filter(v=>v.sid===kgarden.address.sid)[0];
    let location=state.locations.filter(v=>v.lid===street.lid)[0];

@@ -24,10 +24,10 @@ const LoginForm=props=>{
                 {props.error && <div className="text-danger">{props.error}</div>}
                 <div className="form-row">
                   <div className="col form-group" >
-                    <button className="btn btn-outline-secondary mr-1" style={{background: "#3b5f82", color: "white"}} type="submit" disabled={props.submitting}>
+                    <button className="btn mbuttons mr-1" style={{background: "#3b5f82", color: "white"}} type="submit" disabled={props.submitting}>
                         {props.lang.loginbutton}
                     </button>
-                    <button className="btn btn-outline-secondary" type="button" style={{background: "#3b5f82", color: "white"}} disabled={props.pristine || props.submitting} onClick={props.reset}>
+                    <button className="btn mbuttons" type="button" style={{background: "#3b5f82", color: "white"}} disabled={props.pristine || props.submitting} onClick={props.reset}>
                         {props.lang.clearbutton}
                     </button>
                   </div>

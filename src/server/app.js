@@ -19,6 +19,7 @@ import session from 'express-session';
 const app=express();
 
 const staticCSS = fs.readFileSync(path.join(__dirname, '../../node_modules/bootstrap/dist/css/bootstrap.min.css'));
+const mystaticCSS = fs.readFileSync(path.join(__dirname, '../../App.css'));
 //const staticJQCSS = fs.readFileSync(path.join(__dirname, '../../node_modules/jquery-ui-1.12.1/jquery-ui.min.css'));
 const staticJQ=fs.readFileSync(path.join(__dirname, '../../node_modules/jquery/dist/jquery.min.js'));
 //const staticJQUI=fs.readFileSync(path.join(__dirname, '../../node_modules/jquery-ui-1.12.1/jquery-ui.min.js'));
@@ -412,6 +413,7 @@ const buildHTMLPage = ({html, state}) => `
         <meta charset="utf-8">
         <title>Kids Gardens</title>
         <style>${staticCSS}</style>
+        <style>${mystaticCSS}</style>
         
     </head>
     <body>
