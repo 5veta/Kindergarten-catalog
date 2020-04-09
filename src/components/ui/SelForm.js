@@ -6,7 +6,7 @@ import {withRouter} from 'react-router';
 import imgbg from '../../images/bg6.jpg';
 
 const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f=>f, changeloc=f=>f, match, lang})=>{
-    console.log('MATCH: '+ match.cids+' '+ match.regids );
+    
     return(
        
         <form>
@@ -68,7 +68,8 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
    
     const changec=(event)=>{
         let countriesl=event.target;
-        if(!/Select\s\w+/.test(countriesl.value)){
+        let reg=new RegExp(`${lang.form.country}\\s*\\w*`);
+        if(!reg.test(countriesl.value)){
             let arrc=Array.from(countriesl.options)
             .filter(option => option.selected)
             .map(option =>option.value);
@@ -76,6 +77,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
             //onSeltofined({countries: arrc});
         }
         else{
+            history.push(`/`);
             //onSeltofined({countries: []});
         }
     };
@@ -85,7 +87,8 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
     
     const changereg=(event)=>{
         let regionsl=event.target;
-        if(!/Select\s\w+/.test(regionsl.value)){
+        let reg=new RegExp(`${lang.form.region}\\s*\\w*`);
+        if(!reg.test(regionsl.value)){
            let arregions=Array.from(regionsl.options)
             .filter(option => option.selected)
             .map(option => option.value);
@@ -94,7 +97,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
             //onSeltofined({regions: arregions});
         }
         else{
-            
+            history.push(`/sel/${match.params.cids}`);
             //onSeltofined({regions: []});
         }
         
@@ -104,7 +107,8 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
     const changeloc=(event)=>{
         
         let locl=event.target;
-        if(!/Select\s\w+/.test(locl.value)){
+        let reg=new RegExp(`${lang.form.location}\\s*\\w*`);
+        if(!reg.test(locl.value)){
            let arrloc=Array.from(locl.options)
             .filter(option => option.selected)
             .map(option => option.value);
@@ -112,7 +116,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
             //onSeltofined({locations: arrloc});
         }
         else{
-            
+            history.push(`/sel/${match.params.cids}/${match.params.regids}`);
             //onSeltofined({locations: []});
         }
     };

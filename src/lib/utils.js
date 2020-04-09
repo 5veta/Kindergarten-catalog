@@ -15,7 +15,7 @@ export const hoursarray=(i, lasthour, hours)=>{
 export const agev=[0.6, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 3, 4, 5, 6, 7];
 
 export const kgardensList=(state, regids, locids)=>{
-    console.log('regids: '+regids+' locids:'+locids);
+   // console.log('regids: '+regids+' locids:'+locids);
     let kgardens=[];
    
     if(locids!==undefined){
@@ -42,10 +42,10 @@ export const kgardensList=(state, regids, locids)=>{
 export const oneKgarden=(state, props)=>{
     //console.log('id: '+id+'\n props:'+JSON.stringify(props)+'\n');
    let id=props.match.params.id;
-   console.log('id', id);
-   console.log('props.match.path', props.match.path);
+   //console.log('id', id);
+   //console.log('props.match.path', props.match.path);
    let kgardens=(props.match.path===`/admin/added/:id`)?state.useradm.newkglist:(props.match.path===`/accaunt/yourkg/:id`)?state.user.userskgs:state.kgardens;
-   console.log('kgardens', kgardens);
+   //console.log('kgardens', kgardens);
    let kgarden=kgardens.filter(v=>String(v.kgid)===id)[0];
    let street=state.streets.filter(v=>v.sid===kgarden.address.sid)[0];
    let location=state.locations.filter(v=>v.lid===street.lid)[0];
@@ -56,12 +56,12 @@ export const oneKgarden=(state, props)=>{
    kgarden.address.country=country.name;
    kgarden.address.location=`${location.lstatus} ${location.name}`;
    
-   console.log('kgarden:::::', kgarden);  
+   //console.log('kgarden:::::', kgarden);  
    return kgarden;
 };
 
 export const filterRegions=(state, pcity)=>{
-     console.log('pcity: '+pcity);
+     //console.log('pcity: '+pcity);
     if(pcity!==undefined){
         let countryarr=pcity.split("-");
         
