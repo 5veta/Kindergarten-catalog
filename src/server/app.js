@@ -27,6 +27,7 @@ const staticJS = fs.readFileSync(path.join(__dirname, '../../node_modules/bootst
 const fileAssets = express.static(path.join(__dirname, '../../dist/assets/'));
 
 let initialState={
+ files: {},
  kgardens: [],
  countries:[],
  regions:[],
@@ -37,17 +38,18 @@ let initialState={
  selectedforadd:{scountry:"",sregions:"",sregiondistricts:"",slocations:"",stowndists:"", addkgid:"", lessons:[]},
  findKgardens:{countries:[],regions:[],locations:[], submit:""},
  currency: [["грн.", "₴"], ["USD", "$"]], 
- user: {login: "",  islogined: false, userskgs: []},
- useradm: {login: "", isAadm: false, newkglist: []},
+ user: {login: "",  islogined: false, userskgs: [], forgotpass:{status: "false", time: ""}},
+ useradm: {login: "", isAdm: false, newkglist: []},
  translator:{
   locale: "ua",
   langs: ["ua", "en", "ru"],
   ua:{
    
    admin: {adminmenuiterms:[{name: "Нові", link: "/admin/added"},{name: "Додати", link: "/admin/newkg"}], headerskglist:{num: "№", name: "Назва", user: "User", action: "Дія"}},
-   accaunt: {menuitems:[{name: "Додані садочки", link: "/accaunt/yourkg"},{name: "Додати садочок", link: "/accaunt/newkg"}], headerskglist:{num: "№", name: "Назва", status: "Статус"}},
+   accaunt: {userprofile:{user: "Користувач", passchangebutton: "Змінити пароль", passw: "Пароль", cpassw: "Підтвердити пароль"}, menuitems:[{name: "Профіль", link: "/accaunt"}, {name: "Дитячі садочки", link: "/accaunt/yourkg"},{name: "Додати", link: "/accaunt/newkg"}], headerskglist:{num: "№", name: "Назва", status: "Статус"}},
+   attantionlogined: "Ви вже авторизовані",
    addkg:{
-    header: "Додати садочок",
+    header: "Додати дитячий садок",
     name: "Назва",
     description: "Опис",
     site: "Веб-сторінка",
@@ -67,10 +69,10 @@ let initialState={
     },
     price:{
      header: "Ціни:",
-     perhday: "Ціна за пів дня",
-     perday: "Ціна за день",
-     permonth: "Ціна за місяць",
-     peryear: "Ціна за рік",
+     perhday: "Ціна/пів дня",
+     perday: "Ціна/день",
+     permonth: "Ціна/місяць",
+     peryear: "Ціна/рік",
      annual: "Одноразовий внесок",
      currency: "Валюта"
     },
@@ -91,7 +93,8 @@ let initialState={
      name: "Назва",
      desc: "Опис"
     },
-    addbutton: "Додати"
+    addbutton: "Додати",
+    clearbutton: "Очістити"
    },
    kg:{
     address: {
@@ -109,7 +112,7 @@ let initialState={
      perday: "за день",
      permonth: "за місяць",
      peryear: "за рік",
-     annual: "одноразовий внесок за рік"
+     annual: "одноразовий внесок"
     },
     lessons: {
      header: "Заняття:"
@@ -120,45 +123,66 @@ let initialState={
     email: "E-mail",
     passw: "Пароль",
     loginbutton: "Авторизуватися",
-    clearbutton: "Очістити"
+    clearbutton: "Очістити",
+    forgotpass: "Відновити пароль",
+    createaccount: "Зареєструватися"
    },
-   signup:{
+   createaccount:{
     header: "Реєстрація:",
     email: "E-mail",
     passw: "Пароль",
     cpassw: "Підтвердити пароль",
-    signupbutton: "Зареєструватися",
+    createaccountbutton: "Зареєструватися",
     clearbutton: "Очістити"
    },
    logout:{
     logout: "Вийти"
    },
+   forgotpass:{
+    recoverbutton: "Відновити пароль",
+    header: "Відновлення паролю",
+    passchangebutton: "Змінити пароль",
+    passw: "Пароль",
+    cpassw: "Підтвердити пароль",
+    sent: "Ссилка для відновлення паролю була відправлена на ваш email!",
+    wronglink: "Невірна ссилка!",
+    massage: "Пароль змінено."
+   },
    menu:{
-    logo: "KIDS GARDENS",
+    logo: "KINDERGARTENS.pro",
     about: "Про нас",
     newkg: "Додати новий",
-    login: "Увійти",
+    login: {text: "Авторизуватися", link: "/login"},
     signup: "Зареєструватися",
-    logout: "Вийти"
+    logout: "Вийти",
+    enter: "Увійти"
    },
    selkg:{
-    maineheader: "Знайди свій дитячий садок",
+    maineheader: "Приватні дитячі садочки",
     form:{
      country: "Країна",
      region: "Область",
      location: "Населений пункт"
     },
     kgs:{
-     headers:['№', 'Назва', 'Опис', 'Веб-сторінка', 'Телефони', 'Час', 'Вік', 'Ціна/м.', 'Адреса']
-    },
+     headers:['№', 'Назва', 'Опис', 'Телефони', 'Час', 'Вік', 'Ціна/м.', 'Адреса'],
+     age: "років",
+     price: {
+      day: "д",
+      halfday: "пів",
+      month: "м",
+      year: "р",
+      annual: "одноразово"
+     }
+    }
    }
   },
   en:{
-
-   accaunt: {menuitems:[{name: "Added Kids gardens", link: "/accaunt/yourkg"},{name: "Add Kid garden", link: "/accaunt/newkg"}], headerskglist:{num: "#", name: "Name", status: "Status"}},
-   admin: {adminmenuiterms:[{name: "New Kids gardens", link: "/admin/added"},{name: "Add Kid garden", link: "/admin/newkg"}], headerskglist:{num: "#", name: "Name", user: "User", action: "Action"}},
+   attantionlogined: "You have logged in already",
+   accaunt: {userprofile:{user: "User", passchangebutton: "Change password", passw: "Password", cpassw: "Confirm password"}, menuitems:[{name: "Profile", link: "/accaunt"}, {name: "Pre schools", link: "/accaunt/yourkg"},{name: "Add New", link: "/accaunt/newkg"}], headerskglist:{num: "#", name: "Name", status: "Status"}},
+   admin: {adminmenuiterms:[{name: "Newly List", link: "/admin/added"},{name: "Add New", link: "/admin/newkg"}], headerskglist:{num: "#", name: "Name", user: "User", action: "Action"}},
    addkg:{
-    header: "Add kids garden",
+    header: "Add pre school",
     name: "Name",
     description: "Description",
     site: "Web page",
@@ -178,10 +202,10 @@ let initialState={
     },
     price:{
      header: "Price:",
-     perhday: "Price per haft a day",
-     perday: "Price per a day",
-     permonth: "Price per a month",
-     peryear: "Price per a year",
+     perhday: "Price/haft a day",
+     perday: "Price/day",
+     permonth: "Price/month",
+     peryear: "Price/year",
      annual: "Annual price",
      currency: "Currency"
     },
@@ -202,7 +226,8 @@ let initialState={
      name: "Name",
      desc: "Descriptions"
     },
-    addbutton: "Add"
+    addbutton: "Add",
+    clearbutton: "Clear Values"
    },
    kg:{
     address: {
@@ -231,44 +256,64 @@ let initialState={
     email: "E-mail",
     passw: "Password",
     loginbutton: "Login",
-    clearbutton: "Clear Values"
+    clearbutton: "Clear Values",
+    forgotpass: "Forgot password",
+    createaccount: "Create account"
    },
-   signup:{
-    header: "Sign up:",
+   createaccount:{
+    header: "Create account:",
     email: "E-mail",
     passw: "Password",
     cpassw: "Confirm password",
-    signupbutton: "Signup",
+    createaccountbutton: "Create account",
     clearbutton: "Clear Values"
    },
    logout:{
     logout: "Logout"
    },
+   forgotpass:{
+    recoverbutton: "Recover password",
+    header: "Password recovery",
+    passchangebutton: "Change password",
+    passw: "Password",
+    cpassw: "Confirm password",
+    sent: "A password reset link has been sent to your email!",
+    wronglink: "Wrong link!",
+    massage: "Password have been changed."
+   },
    menu:{
-    logo: "KIDS GARDENS",
+    logo: "KINDERGARTENS.pro",
     about: "About",
-    newkg: "New kids garden",
-    login: "Login",
+    login: {text: "Login", link: "/login"},
     signup: "Signup",
-    logout: "Logout"
+    logout: "Logout",
+    enter: "Enter"
    },
    nlesson:{},
    selkg:{
-    maineheader: "Find your kids garden",
+    maineheader: "Private preschools.",
     form:{
      country: "Select country",
      region: "Select region",
-     location: "Select location",
+     location: "Select location"
     },
     kgs:{
-     headers:['#', 'Name', 'Descr', 'site', 'Phone n.', 'Time', 'Age', 'Price/m.', 'Address'],
+     headers:['#', 'Name', 'Descr', 'Phone n.', 'Time', 'Age', 'Price/m.', 'Address'],
+     age: "years",
+     price: {
+      day: "d",
+      halfday: "halfd",
+      month: "m",
+      year: "y",
+      annual: "one time"
+     }
     }
    }
    
   },
   ru:{
-   
-   accaunt: {menuitems:[{name: "Добавленные садики", link: "/accaunt/yourkg"},{name: "Добавить садик", link: "/accaunt/newkg"}], headerskglist:{num: "№", name: "Название", status: "Статус"}},
+   attantionlogined: "Вы уже авторизованы",
+   accaunt: {userprofile:{user: "Пользователь", passchangebutton: "Изменить пароль", passw: "Пароль", cpassw: "Подтвердить пароль"}, menuitems:[{name: "Профиль", link: "/accaunt"}, {name: "Садики", link: "/accaunt/yourkg"},{name: "Добавить", link: "/accaunt/newkg"}], headerskglist:{num: "№", name: "Название", status: "Статус"}},
    admin: {adminmenuiterms:[{name: "Новые", link: "/admin/added"},{name: "Добавить", link: "/admin/newkg"}], headerskglist:{num: "№", name: "Название", user: "User", action: "Действие"}},
    addkg:{
     header: "Добавить садик",
@@ -291,10 +336,10 @@ let initialState={
     },
     price:{
      header: "Цены:",
-     perhday: "Цена за пол дня",
-     perday: "Цена за день",
-     permonth: "Цена за месяц",
-     peryear: "Цена за год",
+     perhday: "Цена/пол дня",
+     perday: "Цена/день",
+     permonth: "Цена/месяц",
+     peryear: "Цена/год",
      annual: "Ежегодный взнос",
      currency: "Валюта"
     },
@@ -315,7 +360,8 @@ let initialState={
      name: "Название",
      desc: "Описание"
     },
-    addbutton: "Добавить"
+    addbutton: "Добавить",
+    clearbutton: "Очистить"
    },
    kg:{
     address: {
@@ -344,36 +390,57 @@ let initialState={
     email: "E-mail",
     passw: "Пароль",
     loginbutton: "Авторизироваться",
-    clearbutton: "Очистить"
+    clearbutton: "Очистить",
+    forgotpass: "Восстановить пароль",
+    createaccount: "Зарегистрироваться"
    },
-   signup:{
+   createaccount:{
     header: "Регистрация:",
     email: "E-mail",
     passw: "Пароль",
     cpassw: "Подтвердить пароль",
-    signupbutton: "Зарегистрироваться",
+    createaccountbutton: "Зарегистрироваться",
     clearbutton: "Очистить"
    },
    logout:{
     logout: "Выйти"
    },
+   forgotpass:{
+    recoverbutton: "Восстановить пароль",
+    header: "Восстановление пароля",
+    passw: "Пароль",
+    cpassw: "Подтвердить пароль",
+    passchangebutton: "Изменить пароль",
+    sent: "На ваш email была отправлена ссылка для восстановления пароля.",
+    wronglink: "Неверная ссылка!",
+    massage: "Пароль изменен."
+   },
    menu:{
-    logo: "KIDS GARDENS",
+    logo: "KINDERGARTENS.pro",
     about: "О нас",
     newkg: "Добавить новый",
-    login: "Войти",
+    login: {text: "Авторизироваться", link: "/login"},
     signup: "Регистрация",
-    logout: "Выйти"
+    logout: "Выйти",
+    enter: "Войти"
    },
    selkg:{
-    maineheader: "Найди свой детский садик",
+    maineheader: "Частные детские садики",
     form:{
      country: "Страна",
      region: "Область",
      location: "Населенный пункт"
     },
     kgs:{
-     headers:['№', 'Название', 'Описание', 'Веб-страница', 'Телефоны', 'Время', 'Возраст', 'Цена/м.', 'Адрес']
+     headers:['№', 'Название', 'Описание', 'Телефоны', 'Время', 'Возраст', 'Цена/м.', 'Адрес'],
+     age: "лет",
+     price: {
+      day: "д",
+      halfday: "пол",
+      month: "м",
+      year: "г",
+      annual: "единожды"
+     }
     }
    }
   }
@@ -381,18 +448,8 @@ let initialState={
 };
 
 const serverStore = storeFactory(true, initialState);
-//const changeinitState=()=>{
- //initialState.kgardens=[1,2,3];
+
  createObjectforState(serverStore);
- //.then(sobj=>{console.log('Sobj:'+JSON.stringify(sobj));
-   //serverStore.dispatch({kgardens: sobj.kgardens, countries: sobj.countries, regions: sobj.regions, regiondistricts: sobj.regiondistricts, locations: sobj.locations, towndistricts: sobj.towndistricts, streets: sobj.streets, type:C.ALL_KEYS});
- // });
- //.then(result=>{initialState=result; console.log(initialState);});
- 
- //next();
-//};
-//changeinitState();
-//console.log(JSON.stringify(serverStore.getState()));
 
 
 

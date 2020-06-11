@@ -10,10 +10,19 @@ export const sitevalid=value=>(value && /^https*:\/\/[A-Z0-9.-]+\/*[A-ZА-Яа-�
 
 export const number = value =>!/^[\d\.]+$/ ? 'Must be a number' : undefined;
 
-export const phoneNumber = value =>value && !/^(\+*[\d,\s-]{9,24})+$/i.test(value) ? 'Invalid phone number' : undefined;
+export const phoneNumber = value =>value && !/^(\+\d{1,3}\s*\d{9,12},*)+$/i.test(value) ? 'Invalid phone number' : undefined;
 
 export const houseapptNumber = value => value && !/^[0-9А-Яа-яЁёіІїЇҐґ\/-]+$/gi.test(value) ? 'Invalid data' : undefined;
 
 export const lettersPointDash= value => value && !/^[\wА-Яа-яЁёіІїЇҐґ\s.'-]$/gi.test(value) ? 'Invalid words' : undefined;
 export const lettersPointDashPattern=/^[\wА-Яа-яЁёіІїЇҐґ\s.'-]$/gi;
 
+export const normalizePhone=value=>{
+    let arr=value.split('');
+    let re=/[\d+\s,]/;
+    let resarr=[].concat(arr).map(v=>
+        re.test(v)?v:''
+    );
+    
+    return resarr.join('');
+};

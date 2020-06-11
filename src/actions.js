@@ -12,32 +12,76 @@ const fetchThenDispatch = (dispatch, url, method, body) =>{
         .catch(logError);
 };
 
-export const moderateNewKg=(data)=>dispatch=>{
-    fetchThenDispatch(
-        dispatch,
-        '/moder/checkkg',
-        'POST',
-        JSON.stringify(data)
-    );
+const fetchThenDispatchFile = (dispatch, url, method, body) =>{
+    fetch(url, {method, body})
+        .then(parseResponse)
+        .then(dispatch)
+        .catch(logError);
 };
 
 export const getListNewKg=()=>dispatch=>{
     fetchThenDispatch(
         dispatch,
-        '/moder/getNewKg',
+        '/moder/new/kindergartens',
         'GET'
+    );
+};
+
+export const moderateNewKg=(data)=>dispatch=>{
+    fetchThenDispatch(
+        dispatch,
+        `/moder/check/kindergartens/${data.kgid}`,
+        'PUT'
+    );
+};
+
+export const deleteKg=(data)=>dispatch=>{
+    fetchThenDispatch(
+        dispatch,
+        `/moder/kindergartens/${data.kgid}`,
+        'DELETE'
+    );
+};
+
+
+
+export const countLessons=(data)=>dispatch=>{
+    fetchThenDispatch(
+        dispatch,
+        '/countries',
+        'POST',
+        JSON.stringify(data)
+    );
+};
+
+export const getSelval=(data)=>dispatch=>{
+        fetchThenDispatch(
+            dispatch,
+            '/countries',
+            'POST',
+            JSON.stringify(data)
+        );
+};
+
+export const addKgarden=(data)=>dispatch=>{
+    fetchThenDispatchFile(
+            dispatch,
+            '/kindergartens',
+            'POST',
+            data
+
     );
 };
 
 export const changeLocale=(data)=>dispatch=>{
     fetchThenDispatch(
         dispatch,
-        '/translate',
-        'POST',
-        JSON.stringify(data)
+        `/translate/${data.locale}`,
+        'PUT'
     );
 };
 
+//authorization
 export const logoutUser=()=>dispatch=>{
     fetchThenDispatch(
         dispatch,
@@ -57,7 +101,7 @@ export const logoutAUser=()=>dispatch=>{
 export const addUser=(data)=>dispatch=>{
     fetchThenDispatch(
         dispatch,
-        '/signup',
+        '/createaccount',
         'POST',
         JSON.stringify(data)
     );
@@ -82,48 +126,39 @@ export const checkAUser=(data)=>dispatch=>{
     );
 };
 
-export const getKgardens=(data)=>dispatch=>{
+export const forgotPassword=(data)=>dispatch=>{
     fetchThenDispatch(
         dispatch,
-        '/kgardens',
+        '/forgotpass',
         'POST',
         JSON.stringify(data)
     );
 };
 
-export const countLessons=(data)=>dispatch=>{
+export const checkLink=(data)=>dispatch=>{
     fetchThenDispatch(
         dispatch,
-        '/countries',
+        '/checklink',
         'POST',
         JSON.stringify(data)
     );
 };
-export const getSelval=(data)=>dispatch=>{
-        fetchThenDispatch(
-            dispatch,
-            '/countries',
-            'POST',
-            JSON.stringify(data)
-        );
-};
 
-export const getSeltofined=(data)=>dispatch=>{
-        fetchThenDispatch(
-            dispatch,
-            '/kgardens',
-            'POST',
-            JSON.stringify(data)
-        );
-};
-
-export const addKgarden=(data)=>dispatch=>{
+export const recoveryPassword=(data)=>dispatch=>{
     fetchThenDispatch(
-            dispatch,
-            '/user/kgadd',
-            'POST',
-            JSON.stringify(data)
+        dispatch,
+        '/passrecovery',
+        'POST',
+        JSON.stringify(data)
     );
-    //.then(res=>dispatch(getSelval({kgid:res.kgid})))
-   // .catch(logError);
 };
+
+export const changePass=(data)=>dispatch=>{
+    fetchThenDispatch(
+        dispatch,
+        '/passchange',
+        'POST',
+        JSON.stringify(data)
+    );
+};
+

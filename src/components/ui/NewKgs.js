@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-const NewKgs=({newkglist, onModerateNewKg=f=>f, lang})=>{
+const NewKgs=({newkglist, onModerateNewKg=f=>f, onDeleteKg=f=>f, lang})=>{
     
     return (
         
@@ -13,7 +13,8 @@ const NewKgs=({newkglist, onModerateNewKg=f=>f, lang})=>{
                         <div>{i+1}</div>
                         <div><Link to={`/admin/added/${kg.kgid}`} >{kg.name}</Link></div>
                         <div>{kg.uid}</div>
-                        <div><button className="btn btn-info" onClick={()=>onModerateNewKg({kgid: kg.kgid})}>Checked</button></div>
+                        <div><button className="btn btn-info" onClick={()=>onModerateNewKg({kgid: kg.kgid})}>Checked</button>
+                        <button className="btn btn-info" onClick={()=>onDeleteKg({kgid: kg.kgid})}>Delete</button></div>
                     </li>
                 )
             }

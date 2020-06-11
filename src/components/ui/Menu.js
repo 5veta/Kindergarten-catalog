@@ -1,42 +1,50 @@
 import PropTypes from 'prop-types';
 import {LogoutF, LangMenu} from '../containers';
+import Button from './Button';
 
 const Menu=({isLogin, login, lang})=>{
     
-    return (
-        <ul className="nav text-nowrap text-black justify-content-center my-4 " style={{color: "#3b5f82"}}>
-        <li className="nav-item">
-        <a className="navbar-brand text-reset text-uppercase" href="/">{lang.logo}</a>
-      </li>
-      
-      <li className="nav-item">
-        <a className="nav-link text-reset" href="#">{lang.about}</a>
-      </li>
-      <li className="nav-item ">
-      {
-        (login==='admin')?
-          <a className="nav-link text-reset" href="/admin">{lang.login}</a>:
-          isLogin?
-            <a className="nav-link text-reset" href="/accaunt">{lang.login}</a>:
-            <a className="nav-link text-reset" href="/login"><u>{lang.login}</u></a>
-      }
-      </li>
-      <li className="nav-item">
-      {
-        (login==='admin')?
-          <LogoutF />:
-            (!isLogin)?<button className="btn btn-light" style={{color: "#3b5f82"}} ><a className="text-reset" href="/signup">{lang.signup}</a></button>:
-            <LogoutF />
-      }
-      </li>
-      <li className="nav-item ml-2">
-        <LangMenu />
-      </li>
+  return (
+  <div class="d-flex justify-content-md-center">
+    <nav class="navbar navbar-expand-md row">
     
-  
-  </ul>
+      <a className="navbar-brand text-reset text-uppercase" href="/">
+        <span class="d-none d-sm-none d-md-block textnavy">{lang.logo}</span>
+        <img class="d-block d-sm-block d-md-none childrenimg mr-5" src="/children.png" />
+      </a>
+      <button class="navbar-toggler d-block d-sm-block d-md-none ml-5" data-toggle="collapse" data-target="#mainmenu" >
+        &#9776;
+      </button>
+      <div id="mainmenu" class="collapse navbar-collapse">
+        <ul className="navbar-nav navbar-center text-nowrap text-black  my-4 textnavy">
+      
+          <li className="nav-item ">
+          {
+          (login==='admin')?
+             <a className="nav-link text-reset" href="/admin">{lang.enter}</a>:
+            isLogin?
+              <a className="text-reset nav-link" href="/accaunt">{lang.enter}</a>:
+              <Button text={lang.login.text} link={lang.login.link} />
+          }
+          </li>
+          <li className="nav-item">
+          {
+            (login==='admin')?
+              <LogoutF />:
+              (isLogin)?<LogoutF />:
+                <div></div>
+          }
+          </li>
+          <li className="nav-item mx-sm-0 mx-md-2 my-2 my-sm-2 my-md-0">
+            <LangMenu />
+          </li>
+        </ul>
 
-    );
+      </div>
+    </nav>
+  </div>
+
+  );
 };
 
 Menu.propTypes={

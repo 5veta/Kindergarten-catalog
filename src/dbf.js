@@ -59,7 +59,7 @@ export const checkUser=(email, password)=>{
 }; 
 export const getUserbyEmail=(email)=>{
   let promise1=pool
-   .query(`SELECT uid, email, password FROM users WHERE email='${email}'`)
+   .query(`SELECT uid, email, password, time FROM users WHERE email='${email}'`)
    .then(result =>{return (result.rows.length<1)?0:result.rows[0];})
    .catch(err => console.error('Error selecting user', err.stack));
    return promise1;
@@ -73,6 +73,14 @@ export const getAUserbyEmail=(email)=>{
    return promise1;
 };
 
+export const getUserbyID=(id)=>{
+  let promise1=pool
+   .query(`SELECT uid, time, token FROM users WHERE uid='${id}'`)
+   .then(result =>{return (result.rows.length<1)?0:result.rows[0];})
+   .catch(err => console.error('Error selecting user by id', err.stack));
+   return promise1;
+};
+
 export const addUser=(email, password, session)=>{
   let promise1=pool
    .query(`INSERT INTO users(email, password, session) VALUES('${email}', '${password}', '${session}') RETURNING uid, email`)
@@ -81,12 +89,28 @@ export const addUser=(email, password, session)=>{
    return promise1;
 };
 
+export const updateUserToken=(token, id)=>{
+ let promise1=pool
+   .query(`UPDATE users SET token='${token}', time=now() WHERE uid='${id}' RETURNING time`)
+   .then(result =>result.rows[0])
+   .catch(err => console.error('Error updating token', err.stack));
+   return promise1;
+};
+
+export const updateUserPass=(pass, id)=>{
+ let promise1=pool
+   .query(`UPDATE users SET password='${pass}', token='' WHERE uid='${id}' RETURNING uid`)
+   .then(result =>result.rows[0])
+   .catch(err => console.error('Error updating pass', err.stack));
+   return promise1;
+};
+
 export const addAddress=(address)=>{
-  //console.log(`INSERT INTO addresses(house, appt, floor, sid) VALUES(${address.house}, ${address.appt}, ${address.floor}, ${address.sid}) ON CONFLICT ON CONSTRAINT all_address DO UPDATE SET house=EXCLUDED.house, appt=EXCLUDED.appt, floor=EXCLUDED.floor RETURNING aid`);
+  console.log(`INSERT INTO addresses(house, appt, floor, sid) VALUES(${address.house}, ${address.appt}, ${address.floor}, ${address.sid}) ON CONFLICT ON CONSTRAINT all_address DO UPDATE SET house=EXCLUDED.house, appt=EXCLUDED.appt, floor=EXCLUDED.floor RETURNING aid`);
   let promise1=pool
    .query(`INSERT INTO addresses(house, appt, floor, sid) VALUES('${address.house}', '${(address.appt===undefined)?0:address.appt}', '${(address.floor===undefined)?0:address.floor}', '${address.sid}') ON CONFLICT ON CONSTRAINT all_address DO UPDATE SET house=EXCLUDED.house, appt=EXCLUDED.appt, floor=EXCLUDED.floor RETURNING aid`)
    .then(result =>result.rows[0].aid)
-   .catch(err => console.error('Error executing query', err.stack));
+   .catch(err => console.error('Error adding address', err.stack));
    return promise1;
 };
  
@@ -98,22 +122,36 @@ export const checkedkgarden=(id)=>{
    return promise1;
 };
 
+export const deletekindergarden=(id)=>{
+ let promise1=pooladm
+   .query(`DELETE FROM kgardens WHERE kgid='${id}'`)
+   .catch(err => console.error('Error deleting kidsgarden', err.stack));
+   return promise1;
+};
+
+export const updateIMGofKG=(kgid, imgname)=>{
+ let promise1=pool
+   .query(`UPDATE kgardens SET img='${imgname}' WHERE kgid='${kgid}' RETURNING kgid, img`)
+   .then(result =>result.rows[0])
+   .catch(err => console.error('Error updating img', err.stack));
+   return promise1;
+};
 
 export const addKgarden=(name, descr, site, phonen, time, age, price, aid, lessons, uid)=>{
-  //console.log(`INSERT INTO kgardens(name, descr, site, phonen, time, age, price, aid) VALUES('${name}', '${descr}', '${site}', '${JSON.stringify(phonen)}', '${JSON.stringify(time)}', '${JSON.stringify(age)}', '${JSON.stringify(price)}', '${aid}') ON CONFLICT ON CONSTRAINT name_address DO UPDATE SET name=EXCLUDED.name, descr=EXCLUDED.descr, site=EXCLUDED.site, phonen=EXCLUDED.phonen, time=EXCLUDED.time, age=EXCLUDED.age, price=EXCLUDED.price RETURNING kgid`);
+  console.log(`INSERT INTO kgardens(name, descr, site, phonen, time, age, price, aid, lessons, uid) VALUES('${name}', '${descr}', '${site}', '${JSON.stringify(phonen)}', '${JSON.stringify(time)}', '${JSON.stringify(age)}', '${JSON.stringify(price)}', '${aid}', '${JSON.stringify(lessons)}', '${uid}') ON CONFLICT ON CONSTRAINT name_address DO UPDATE SET name=EXCLUDED.name, descr=EXCLUDED.descr, site=EXCLUDED.site, phonen=EXCLUDED.phonen, time=EXCLUDED.time, age=EXCLUDED.age, price=EXCLUDED.price, lessons=EXCLUDED.lessons RETURNING kgid`);
   let promise1=pool
    .query(`INSERT INTO kgardens(name, descr, site, phonen, time, age, price, aid, lessons, uid) VALUES('${name}', '${descr}', '${site}', '${JSON.stringify(phonen)}', '${JSON.stringify(time)}', '${JSON.stringify(age)}', '${JSON.stringify(price)}', '${aid}', '${JSON.stringify(lessons)}', '${uid}') ON CONFLICT ON CONSTRAINT name_address DO UPDATE SET name=EXCLUDED.name, descr=EXCLUDED.descr, site=EXCLUDED.site, phonen=EXCLUDED.phonen, time=EXCLUDED.time, age=EXCLUDED.age, price=EXCLUDED.price, lessons=EXCLUDED.lessons RETURNING kgid`)
    .then(result =>result.rows[0].kgid)
-   .catch(err => console.error('Error executing query', err.stack));
+   .catch(err => console.error('Error adding kids garden', err.stack));
    return promise1;
 };
 
 export const selUserID=(login)=>{
   //console.log(`INSERT INTO kgardens(name, descr, site, phonen, time, age, price, aid) VALUES('${name}', '${descr}', '${site}', '${JSON.stringify(phonen)}', '${JSON.stringify(time)}', '${JSON.stringify(age)}', '${JSON.stringify(price)}', '${aid}') ON CONFLICT ON CONSTRAINT name_address DO UPDATE SET name=EXCLUDED.name, descr=EXCLUDED.descr, site=EXCLUDED.site, phonen=EXCLUDED.phonen, time=EXCLUDED.time, age=EXCLUDED.age, price=EXCLUDED.price RETURNING kgid`);
   let promise1=pool
-   .query(`SELECT uid FROM users WHERE login='${login}'`)
+   .query(`SELECT uid FROM users WHERE email='${login}'`)
    .then(result =>result.rows[0].uid)
-   .catch(err => console.error('Error executing query', err.stack));
+   .catch(err => console.error('Error selecting user', err.stack));
    return promise1;
 };
 

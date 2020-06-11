@@ -25,7 +25,11 @@ const constants = {
     SET_SUBMIT: "SET_SUBMIT",
     COUNT_LESSONS: "COUNT_LESSONS",
     CHANGE_LOCALE: "CHANGE_LOCALE",
-    GET_NEWKG: "GET_NEWKG"
+    GET_NEWKG: "GET_NEWKG",
+    FILE_DATA: "FILE_DATA",
+    USER_ADD_KG: "USER_ADD_KG",
+    PASS_RECOVERY: "PASS_RECOVERY",
+    DELETE_KG: "DELETE_KG"
 };
 
 export default constants;

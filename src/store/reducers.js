@@ -1,14 +1,45 @@
 import C from '../constants';
 
-
+export const files=(state={}, action={type: nul})=>{
+    switch(action.type){
+        case C.FILE_DATA:
+            return action.files;
+        default:
+            return state;
+    }
+};
 
 export const user=(state={}, action={ type: null })=>{
     switch (action.type){
         case C.USER_ATH:
             return ({
-               login: action.login,
-               islogined: action.islogined,
-               userskgs: action.userskgs
+                ...state,
+                login: action.login,
+                islogined: action.islogined,
+                userskgs: action.userskgs,
+               
+            });
+        case C.USER_ADD_KG:
+            return ({
+               ...state,
+               userskgs: state.userskgs.concat(action.kgarden)
+            });
+        case C.PASS_RECOVERY:
+            return ({
+                ...state,
+                forgotpass: forgotpass({}, action)
+            });
+        default:
+            return state;
+    }
+};
+
+export const forgotpass=(state={}, action={type: null})=>{
+    switch (action.type){
+        case C.PASS_RECOVERY:
+            return ({
+                status: action.status,
+                time: action.time
             });
         default:
             return state;
@@ -28,6 +59,11 @@ export const useradm=(state={}, action={ type: null })=>{
                 ...state,
                 newkglist: state.newkglist.filter(v=>v.kgid!==action.kgid)
             });
+        case C.DELETE_KG:
+            return({
+                ...state,
+                newkglist: state.newkglist.filter(v=>v.kgid!==action.kgid)
+                });
         default:
             return state;
     }
@@ -39,34 +75,34 @@ export const selectedforadd=(state={}, action={ type: null })=>{
         case C.SEL_COUNTRY:
             return ({
                 ...state,
-                scountry: action.scountry,
+                scountry: action.target,
                 addkgid: ""
             });
         case C.SEL_REGION:
             return ({
                 ...state,
-                sregions: action.sregions
+                sregions: action.target
             });
         case C.SEL_REGDST:
             return ({
                 ...state,
-                sregiondistricts: action.sregiondistricts
+                sregiondistricts: action.target
             });
         case C.SEL_LOCATION:
             return ({
                 ...state,
-                slocations: action.slocations,
+                slocations: action.target,
                 stowndists: ""
             });
         case C.SEL_TOWNDTS:
             return ({
                 ...state,
-                stowndists: action.stowndists
+                stowndists: action.target
             });
         case C.SEL_STREET:
             return ({
                 ...state,
-                sstreet: action.sstreet
+                sstreet: action.target
             });
         case C.ADDED_KGARDEN:
             return ({
@@ -95,7 +131,7 @@ export const findKgardens=(state={}, action={ type: null })=>{
         case C.SEL_COUNTRIES:
             return ({
                 ...state,
-                countries: action.scountries,
+                countries: action.target,
                 regions:[],
                 locations:[],
                 submit: false
@@ -103,23 +139,19 @@ export const findKgardens=(state={}, action={ type: null })=>{
         case C.SEL_REGIONS:
             return ({
                 ...state,
-                regions: action.sregions,
+                regions: action.target,
                 locations:[],
                 submit: false
             });
         case C.SEL_LOCATIONS:
             return ({
                 ...state,
-                locations: action.slocations,
+                locations: action.target,
                 submit: false
             });
-        case C.SET_SUBMIT:
-            return ({
-                ...state,
-                submit: action.ssubmit
-            });
-            default:
-                return state;
+        
+        default:
+            return state;
     }
     
 };

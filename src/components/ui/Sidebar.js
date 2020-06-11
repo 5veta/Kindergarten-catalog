@@ -4,16 +4,16 @@ import {NavLink} from 'react-router-dom';
 const Sidebar=({items})=>{
     
     return (
-        <ul className="tabs nav nav-pills flex-column">
+        <nav className="nav nav-pills flex-row flex-sm-row flex-md-column">
             {items.map((item, i)=>
-                <li className="nav-item"><NavLink key={i} className="nav-link" to={item.link}>{item.name}</NavLink></li>
+                <NavLink key={i} className="nav-link flex-fill " exact to={item.link}><nobr>{item.name}</nobr></NavLink>
             )}
-        </ul>
+        </nav>
     );
 };
 
 Sidebar.propTypes={
-    items: PropTypes.object
+    items: PropTypes.array
 };
 
 export default Sidebar;

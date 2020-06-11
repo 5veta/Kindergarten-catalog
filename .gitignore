@@ -7,3 +7,6 @@ node_modules
 *.tmp
 *~
 .env
+dbf.js
+*.json
+countriesParser.js

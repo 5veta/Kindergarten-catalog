@@ -1,9 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { countries, regions, regiondistricts, locations, towndistricts, streets, kgardens, selectedforadd, findKgardens, user, useradm, translator, currency} from './reducers';
+import { countries, regions, regiondistricts, locations, towndistricts, streets, kgardens, selectedforadd, findKgardens, user, useradm, translator, currency, files} from './reducers';
 import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
+  files,
   kgardens,
   countries,
   regions,

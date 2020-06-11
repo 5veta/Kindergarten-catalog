@@ -1,8 +1,20 @@
 import useAutocomplete from '@material-ui/lab/useAutocomplete';
 import {lettersPointDashPattern} from '../lib/validators';
 
+export const renderFileField=({input, label, type, meta: {touched, error, warning}, ...props})=>{
+
+ return (
+  <div>
+  <input {...input} type={type} value={null}  />
+  
+  </div>
+ );
+ 
+};
 
 export const renderAutocompleteField=({input, label, type, meta: { touched, error, warning }, ...props})=>{
+ error=(props.name==='locv'&& props.locid!=="")?undefined:error;
+ error=(props.name==='stv'&& props.streetid!=="")?undefined:error;
   const {
     getRootProps,
     getInputLabelProps,
@@ -18,7 +30,7 @@ export const renderAutocompleteField=({input, label, type, meta: { touched, erro
   return ( 
     <div>
       <div {...getRootProps()}>
-        <label style={{color: "#3b5f82"}}>{label}</label>
+        <label className="textnavy"><nobr>{label}</nobr></label>
         <input className={"form-control"+" "+((touched && error)?" border border-danger":"")} {...getInputProps()} onBlur={props.actionBlur} style={{borderColor: "#3b5f82"}} />
         {touched &&
         ((error && <span className="text-danger">{error}</span>) ||
@@ -43,7 +55,7 @@ export const renderField = ({input, label, type, meta: { touched, error, warning
   {
     (label)?
     <div>
-      <label style={{color: "#3b5f82"}}>{label}</label>
+      <label className="textnavy" ><nobr>{label}</nobr></label>
       <div>
         <input className={"form-control"+" "+((touched && error)?" border border-danger":"")} {...input} id={props.id} placeholder={label} type={type} style={{borderColor: "#3b5f82"}}/>
         {touched &&
@@ -52,7 +64,7 @@ export const renderField = ({input, label, type, meta: { touched, error, warning
       </div>
     </div>:
     <div>
-      <input className={"form-control"+" "+((touched && error)?" border border-danger":"")} {...input} id={props.id} placeholder={label} type={type} style={{borderColor: "#3b5f82"}} />
+      <input className={"form-control"+" "+((touched && error)?" border border-danger":"")} {...input} id={props.id} placeholder={props.placeholder} type={type} style={{borderColor: "#3b5f82"}} />
       {touched &&
         ((error && <span className="text-danger">{error}</span>) ||
           (warning && <span>{warning}</span>))}
@@ -65,7 +77,7 @@ export const renderSelectField = ({input, label, type, meta: { touched, error, w
   <div>
     {(label)?
     <div>
-    <label style={{color: "#3b5f82"}}>{label}</label>
+    <label className="textnavy"><nobr>{label}</nobr></label>
     <div>
       <select className={"custom-select my-1 mr-sm-2"+" "+((touched && error)?" border border-danger":"")} {...input} type={type} style={{borderColor: "#3b5f82"}} >
       {touched &&

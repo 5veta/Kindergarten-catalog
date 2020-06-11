@@ -9,15 +9,26 @@ import KidsGarden from './ui/KidsGarden';
 import Kgarden from './ui/Kgarden';
 import Login from './ui/Login';
 import Logout from './ui/Logout';
-import Signup from './ui/Signup';
+import CreateAccount from './ui/CreateAccount';
 import Menu from './ui/Menu';
 import NewKgs from './ui/NewKgs';
+import PassRecovery from './ui/PassRecovery';
+import Attantion from './ui/Attantion';
+import ForgotPassword from './ui/ForgotPassword';
 import ListOfUserKgs from './ui/ListOfUserKgs';
 import {Accaunt, AdminAccaunt} from './ui/Accaunt';
 import DropdownLang from './ui/DropdownLang';
-import {getCountry, getKgardens, getSelval, addKgarden, getSeltofined, checkUser, checkAUser, addUser, logoutUser, logoutAUser, countLessons, changeLocale, getListNewKg, moderateNewKg} from '../actions';
+import UserProfile from './ui/UserProfile';
+import Footer from './ui/Footer';
+import {getCountry, getKgardens, getSelval, addKgarden, getSeltofined, checkUser, checkAUser, addUser, logoutUser, logoutAUser, countLessons, changeLocale, getListNewKg, moderateNewKg, addFileData, forgotPassword, recoveryPassword, checkLink, changePass, deleteKg} from '../actions';
 import {kgardensList, oneKgarden, filterRegions, filterLocation, getTranslation} from '../lib/utils.js';
 
+export const FooterC=connect(
+    state=>({
+        isLogin: state.useradm.isAdm,
+        lang: getTranslation(state, 'menu')
+    })
+)(Footer);
 
 export const AdmNewKgsList=connect(
     state=>({
@@ -32,6 +43,9 @@ export const AdmNewKgsList=connect(
         },
         ongetListNewKg(){
             dispatch(getListNewKg());
+        },
+        onDeleteKg(data){
+            dispatch(deleteKg(data));
         }
     })
 )(NewKgs);
@@ -52,7 +66,7 @@ export const UserAccaunt=connect(
 
 export const AdmAccaunt=connect(
     state=>({
-        isLogin: state.useradm.isAdm,
+        isAdm: state.useradm.isAdm,
         lang: getTranslation(state, 'admin')
     })
 )(AdminAccaunt);
@@ -64,6 +78,19 @@ export const MenuC=connect(
         lang: getTranslation(state, 'menu')
     })
 )(Menu);
+
+export const CUserProfile=connect(
+    state=>({
+        isLogin: state.user.islogined,
+        login: state.useradm.isAdm?state.useradm.login:state.user.login,
+        lang: getTranslation(state, 'accaunt')
+    }),
+    dispatch=>({
+        onChangePass(data){
+            dispatch(changePass(data));
+        }
+    })
+)(UserProfile);
 
 export const LangMenu=connect(
     state=>({
@@ -118,10 +145,10 @@ export const LoginAF=connect(
     })
 )(Login);
 
-export const SignupF=connect(
+export const CreateAccountF=connect(
     state=>({
         islogined: state.user.islogined,
-        lang: getTranslation(state, 'signup')
+        lang: getTranslation(state, 'createaccount')
     }),
     dispatch=>
     ({
@@ -129,11 +156,49 @@ export const SignupF=connect(
             dispatch(addUser(data));
         }
     })
-)(Signup);
+)(CreateAccount);
 
+export const ForgotPass=connect(
+     state=>({
+        islogined: state.user.islogined,
+        status: state.user.forgotpass.status,
+        lang: getTranslation(state, 'forgotpass')
+    }),
+    dispatch=>
+    ({
+        onForgotPassword(data){
+            dispatch(forgotPassword(data));
+        }
+    })
+)(ForgotPassword);
+
+export const PasswordRecovery=connect(
+    (state, props)=>({
+        islogined: state.user.islogined,
+        link: props.match.params.token,
+        status: state.user.forgotpass.status,
+        lang: getTranslation(state, 'forgotpass')
+    }),
+    dispatch=>
+    ({
+        onRecoverPassword(data){
+            dispatch(recoveryPassword(data));
+        },
+        onCheckLink(data){
+            dispatch(checkLink(data));
+        }
+    })
+)(PassRecovery);
+
+export const AttantionLogined=connect(
+    state=>({
+        attantion: getTranslation(state, 'attantionlogined')
+    })
+)(Attantion);
 
 export const AddKgardens=connect(
     state=>({
+        formpicture: (state.form.addform===undefined||state.form.addform.values===undefined || state.form.addform.values.file_name===undefined)?null:state.form.addform.values.file_name[0],
         countries: state.countries,
         regions: state.regions.filter(v=>String(v.cid)===state.selectedforadd.scountry),
         regdistrs: state.regiondistricts.filter(v=>String(v.rid)===state.selectedforadd.sregions),
@@ -160,6 +225,7 @@ export const AddKgardens=connect(
         onCountLessons(data){
             dispatch(countLessons(data));
         }
+        
     })
 )(AddingF);
 
@@ -187,16 +253,7 @@ export const FormtoSel=connect(
             rdiloc: filterLocation(state, props.match.params.regids),
             kgardens: kgardensList(state, props.match.params.regids, props.match.params.locids),
             lang: getTranslation(state, 'selkg')
-        }),
-    dispatch=>
-    ({
-        onSeltofined(data){
-            dispatch(getSeltofined(data));
-        },
-        onKgardens(data){
-            dispatch(getKgardens(data));
-        }
-    })
+        })
 )(SelForm);
 
 export const KgardenDetails=connect(

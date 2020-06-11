@@ -9,7 +9,7 @@ const muxlength30=muxlengthCreator(30);
 const minlength8=minlengthCreator(8);
 const minlength6=minlengthCreator(6);
 
-const SignupForm=props=>{
+const CreateAccountForm=props=>{
     
     return (
               
@@ -30,7 +30,7 @@ const SignupForm=props=>{
                 <div className="form-row">
                   <div className="col form-group" >
                     <button className="btn  mr-1 mbuttons"  type="submit" disabled={props.submitting}>
-                        {props.lang.signupbutton}
+                        {props.lang.createaccountbutton}
                     </button>
                     <button className="btn mbuttons"  type="button" disabled={props.pristine || props.submitting} onClick={props.reset}>
                         {props.lang.clearbutton}
@@ -44,16 +44,14 @@ const SignupForm=props=>{
     );
 };
 
-SignupForm.propTypes={
-    
-};
 
-const SignupReduxForm = reduxForm({
+
+const CreateAccountReduxForm = reduxForm({
   // a unique name for the form
-  form: 'singup'
-})(SignupForm);
+  form: 'createaccount'
+})(CreateAccountForm);
 
-const Signup=({islogined, onAddUser=f=>f, lang})=>{
+const CreateAccount=({islogined, onAddUser=f=>f, lang})=>{
     
     const onSubmit=(formData)=>{
         console.log(formData);
@@ -68,11 +66,11 @@ const Signup=({islogined, onAddUser=f=>f, lang})=>{
     return (
       <div>
       {(islogined)?
-        <Redirect to="/" />:
+        <Redirect to="/accaunt" />:
         <div className="row justify-content-center">
           <div className="flex-row p-2  col-5 ">
-            <h5 className="" style={{color: "#3b5f82"}}>{lang.singup}</h5>
-            <SignupReduxForm onSubmit={onSubmit} lang={lang}/>
+            <h5 className="" style={{color: "#3b5f82"}}>{lang.header}</h5>
+            <CreateAccountReduxForm onSubmit={onSubmit} lang={lang}/>
           </div>
         </div>
               
@@ -82,9 +80,10 @@ const Signup=({islogined, onAddUser=f=>f, lang})=>{
     );
 };
 
-Signup.propTypes={
+CreateAccount.propTypes={
     islogined: PropTypes.bool,
-    onAddUser: PropTypes.func
+    onAddUser: PropTypes.func,
+    lang: PropTypes.string
 };
 
-export default Signup;
+export default CreateAccount;

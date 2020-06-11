@@ -5,15 +5,16 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {withRouter} from 'react-router';
 import HeaderPicture from './HeaderPicture';
 import classNames from "classnames";
-import '../../../App.css';
+import {Articles} from "./Articles";
+
 
 const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f=>f, changeloc=f=>f, match, lang, classHandler=f=>f})=>{
     
     return(
        
         <form>
-            <div className="flex-fill form-row mb-2">
-                <div className="col">
+            <div className="form-row my-2 ">
+                <div className="col-12 col-sm-12 col-md mb-2">
                     <select  onChange={changec}  className={classHandler(match.cids)} >
                         <option>{lang.country}</option>
                         {countries.map((val, i)=>
@@ -21,7 +22,7 @@ const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f
                         )}
                     </select>
                 </div>
-                <div className="col">
+                <div className="col-12 col-sm-12 col-md mb-2">
                     <select onChange={changereg}  className={classHandler(match.regids)} >
                         <option >{lang.region}</option>
                         {   regions.map((val, i)=>
@@ -30,11 +31,11 @@ const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f
                     </select>
                 </div>
                 
-                <div className="col">
+                <div className="col-12 col-sm-12 col-md mb-2">
                     <select  onChange={changeloc} className={classHandler(match.locids)} >
                         <option >{lang.location}</option>
                         { rdiloc.map((v, i)=>
-                                <optgroup key={i} data-id={JSON.stringify({regd: v.regdist.rdid})} label={v.regdist.name}  >
+                                <optgroup key={v.regdist.rdid} data-id={JSON.stringify({regd: v.regdist.rdid})} label={v.regdist.name}  >
                                 
                                     {
                                         v.locations.map((vl,y)=>
@@ -66,14 +67,14 @@ KgSelForm.propTypes={
 };
 
 
-const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history, match, kgardens=[], lang})=>{
+const SelForm=({countries=[], regions=[], rdiloc=[],  history, match, kgardens=[], lang})=>{
    
     const classHandler=(matchv)=>{
         let cn=classNames({
         "custom-select text-success selform": matchv !== undefined,
         "custom-select selform": matchv === undefined
       });
-        console.log('cn: ', cn);
+    
         return cn;
     };
         
@@ -85,11 +86,11 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
             .filter(option => option.selected)
             .map(option =>option.value);
             history.push(`/sel/${arrc.join("-")}`);
-            //onSeltofined({countries: arrc});
+            //onSeltofind({type: "sel_countries", target_value: arrc});
         }
         else{
             history.push(`/`);
-            //onSeltofined({countries: []});
+            //onSeltofind({type: "sel_countries", target_value: []});
         }
     };
     
@@ -105,11 +106,11 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
             .map(option => option.value);
             
             history.push(`/sel/${match.params.cids}/${arregions.join("-")}`);
-            //onSeltofined({regions: arregions});
+           
         }
         else{
             history.push(`/sel/${match.params.cids}`);
-            //onSeltofined({regions: []});
+           
         }
         
     };
@@ -124,23 +125,40 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  onSeltofined=f=>f, history
             .filter(option => option.selected)
             .map(option => option.value);
             history.push(`/sel/${match.params.cids}/${match.params.regids}/${arrloc.join("-")}`);
-            //onSeltofined({locations: arrloc});
+           
         }
         else{
             history.push(`/sel/${match.params.cids}/${match.params.regids}`);
-            //onSeltofined({locations: []});
+           
         }
     };
     
     return(
-        <div className="row justify-content-center" >
-        <HeaderPicture lang={lang} />
-        <div className="flex-row p-2  col-10">
-            <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang.form} classHandler={classHandler}/>
-        {(rdiloc.length>0)?
-            <Kgardens kgardens={kgardens} lang={lang.kgs} />:<div></div>
-        }   
-        
+        <div className="d-flex align-items-start h-100 bg-light pb-4" >
+        <div className="flex-fill d-flex flex-column justify-content-md-center ">
+            <div className="d-none d-sm-none d-md-block">
+                <HeaderPicture lang={lang} />
+            </div>
+            <div className="d-flex justify-content-start d-block d-sm-block d-md-none ml-2">
+                <h3 className="headertext">{lang.maineheader}</h3>
+            </div>
+            <div className="d-flex justify-content-md-center my-0 my-sm-0 my-md-4 ml-2 ml-md-0">
+                <div className="w-75" >
+                    <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang.form} classHandler={classHandler}/>
+                </div>
+            </div>
+            <div className="d-flex justify-content-md-center ml-2 ml-md-0">
+            {(rdiloc.length>0)?
+                <div className="w-75">
+                    <Kgardens kgardens={kgardens} lang={lang.kgs} />
+                </div>:<div></div>
+            }    
+            </div>
+            <div className="d-flex justify-content-md-center my-0 my-sm-0 my-md-5 py-md-3 ml-2 ml-md-0">
+                <div className="w-75" >
+                    <Articles />
+                </div>
+            </div>
         </div>
         </div>
     );
@@ -150,7 +168,7 @@ SelForm.propTypes={
     countries: PropTypes.array,
     regions: PropTypes.array,
     rdiloc: PropTypes.array,
-    onSeltofined: PropTypes.func,
+    onSeltofind: PropTypes.func,
     lang: PropTypes.object
 };
 

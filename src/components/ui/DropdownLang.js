@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const DropdownMenu=({items, selectedItem, selItem=f=>f})=>{
     
     return(
-        <div className="dropdown">
+        <div className="dropdown ">
             <button className="btn dropdown-toggle mbuttons" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {selectedItem}
             </button>
