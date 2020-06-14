@@ -1,5 +1,11 @@
 import {pool, pooladm} from './dbconfig';
 
+export const addAddress=(address)=>{
+    return pool
+        .query(`INSERT INTO addresses(house, appt, floor, sid) VALUES('${address.house}', '${(address.appt===undefined)?0:address.appt}', '${(address.floor===undefined)?0:address.floor}', '${address.sid}') ON CONFLICT ON CONSTRAINT all_address DO UPDATE SET house=EXCLUDED.house, appt=EXCLUDED.appt, floor=EXCLUDED.floor RETURNING aid`)
+        .then(result =>result.rows[0].aid)
+        .catch(err => console.error('Error adding address', err.stack));
+};
 
 export const selectallcountries=()=>{
     return pool

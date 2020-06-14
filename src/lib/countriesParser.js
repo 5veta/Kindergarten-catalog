@@ -1,9 +1,6 @@
-import countriesInf from '../server/routes/countriesDb.json';
-//import initstate from '../initialState.json';
-import dbdata from '../datafromdb.json';
+import countriesInf from '../db/countriesDb.json';
 import {addcountry, addregion, addregdistr, addlocation, addtowndistr, addstreet} from '../db/addresses';
 import fs from 'fs';
-import {selectallkgardens, selectallcountries, selectallregions, selectallregsdistricts, selectalllocations, selectalltowndistricts, selectallstreets, selectstreetsoftownd, selectstreetsoflocation } from '../dbf';
 import path from 'path';
 
 export const parseCountries=async()=>{

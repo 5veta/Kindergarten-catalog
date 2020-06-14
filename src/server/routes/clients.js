@@ -37,7 +37,7 @@ const transformVarsfromBody=(body)=>{
   let time= {from: body.timef, to: body.timet};
   let age={from: body.agef, to: body.aget};
   let price={halfday: body.prperhday, day: body.prperday, month: body.prpem, year: body.prpery, annual: body.prann, currency: body.pcurrency.split(',') };
-  let address={sid: body.sid, house: body.house, appt: body.appt, floor: body.floor };
+  let address={sid: Number(body.sid), house: body.house, appt: body.appt, floor: body.floor };
   
   let lessons=Object.keys(body).filter(v=>/^lname/.test(v)).map(vl=>{ if(vl!=='lname'){ let arr=vl.split('-'); return {lname: body[`lname-${arr[1]}`], ldesc: body[`ldesc-${arr[1]}`]}; } return {lname: body.lname, ldesc: body.ldesc}; });
   let obj={name, descr, site, phonen, time, age, price, address, lessons};
@@ -65,14 +65,16 @@ router.post("/countries", (req, res)=>{
 
 
 router.post("/kindergartens", upload.single('upfile'), async (req, res)=>{
+  console.log("req.body");
   let {name, descr, site, phonen, time, age, price, address, lessons}=transformVarsfromBody(req.body);
   let {sid, house, appt, floor}=address;
   
   if(req.store.getState().user.islogined){
     const uid=await selUserID(req.store.getState().user.login);
     if(uid){
-      const aid=await addAddress(address);
-      const kgid=await addKgarden(name, descr, site, phonen, time, age, price, aid, lessons, uid);
+      console.log("uid: "+uid);
+      const aid=await addAddress(address).catch(err=>console.error('Error adding address', err.stack));
+      const kgid=await addKgarden(name, descr, site, phonen, time, age, price, aid, lessons, uid).catch(err=>console.error('Error adding kindergarten', err.stack));
       const img=renameIMGFile(req.file, kgid);
       updateIMGofKG(kgid, img);
       

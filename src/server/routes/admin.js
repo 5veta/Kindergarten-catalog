@@ -4,7 +4,6 @@ import fetch from 'isomorphic-fetch';
 const express=require("express");
 const router=express.Router();
 import C from '../../constants';
-import countriesInf from './countriesDb.json';
 import {parseCountries, createObjectforState, addtoobj} from '../../lib/countriesParser.js';
 import Login from '../../components/ui/Login';
 import {selectnewkgardens, checkedkgarden, deletekindergarden} from '../../db/kindergartens';
