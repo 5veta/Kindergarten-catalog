@@ -38,8 +38,7 @@ const transformVarsfromBody=(body)=>{
   let age={from: body.agef, to: body.aget};
   let price={halfday: body.prperhday, day: body.prperday, month: body.prpem, year: body.prpery, annual: body.prann, currency: body.pcurrency.split(',') };
   let address={sid: Number(body.sid), house: body.house, appt: body.appt, floor: body.floor };
-  
-  let lessons=Object.keys(body).filter(v=>/^lname/.test(v)).map(vl=>{ if(vl!=='lname'){ let arr=vl.split('-'); return {lname: body[`lname-${arr[1]}`], ldesc: body[`ldesc-${arr[1]}`]}; } return {lname: body.lname, ldesc: body.ldesc}; });
+  let lessons=body.lessons;
   let obj={name, descr, site, phonen, time, age, price, address, lessons};
   
   return obj;

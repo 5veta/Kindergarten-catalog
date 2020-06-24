@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import NewLessons  from './NewLessons';
 import { renderToString } from 'react-dom/server';
 import {Redirect} from 'react-router-dom';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, FieldArray } from 'redux-form';
 import {hoursarray, agev} from '../../lib/utils';
 import {required, muxlengthCreator, minlengthCreator, emailvalid, number, sitevalid, phoneNumber, houseapptNumber, lettersPointDash, normalizePhone} from '../../lib/validators';
 import {renderField, renderSelectField, renderAutocompleteField, renderFileField} from '../formsParts';
@@ -106,7 +106,7 @@ const AddingForm=(props)=>{
             
       <div className="form-row">
         <div className="col-12 col-sm-12 col-md-3 form-group">                    
-          <Field name="locv" component={renderAutocompleteField} optionarr={props.locations} actionBlur={props.changeloc} opvalf="lstatus" opval="name" type="text" label={props.lang.address.loc} placeholder={props.lang.address.loc} locid={props.locid}/>
+          <Field name="locv" component={renderAutocompleteField} optionarr={props.locations} actionBlur={props.changeloc} opid="lid" opvalf="lstatus" opval="name" type="text" label={props.lang.address.loc} placeholder={props.lang.address.loc} locid={props.locid}/>
         </div>
         {
           props.towndist[0]?
@@ -116,7 +116,7 @@ const AddingForm=(props)=>{
           <div></div>
         }
         <div className="col-12 col-sm-12 col-md-3 form-group ">
-          <Field name="stv" component={renderAutocompleteField} type="text" optionarr={props.streets} actionBlur={props.changestreet} opvalf="streettype" opval="streetname" label={props.lang.address.street} placeholder={props.lang.address.street}  streetid={props.streetid} />
+          <Field name="stv" component={renderAutocompleteField} type="text" optionarr={props.streets} actionBlur={props.changestreet} opid="stid" opvalf="streettype" opval="streetname" label={props.lang.address.street} placeholder={props.lang.address.street}  streetid={props.streetid} />
         </div>  
       </div>
             
@@ -136,12 +136,7 @@ const AddingForm=(props)=>{
           <label  htmlFor="timefrom">{props.lang.nlesson.header}</label>
         </div>
       </div>
-      <NewLessons newLessons={props.newLessons} lang={props.lang.nlesson}/>
-      {(props.lessons.length>0)?props.lessons.map((v, i)=>
-        <NewLessons key={i} keyv={i} newLessons={props.newLessons} lang={props.lang.nlesson} />
-        ):
-        <div></div>
-      }
+      <FieldArray name="lessons" component={NewLessons} lang={props.lang.nlesson} />
             
       <div className="form-row">
         <div className="col form-group" >
@@ -178,10 +173,11 @@ const AddingF=({formpicture, countries=[], regions=[], regdistrs=[], locations=[
         })
       }
       let formData = new FormData();
-      
+      let string_lessons=JSON.stringify(reduxformData.lessons);
       Object.keys(reduxformData).map(val=>{
         formData.append(val, reduxformData[val]);
       });
+      formData.set("lessons", string_lessons);
       formData.append("upfile", formpicture);
       formData.append("locv", locid);
       formData.append("sid", streetid);

@@ -27,7 +27,8 @@ export const renderAutocompleteField=({input, label, type, meta: { touched, erro
     options: props.optionarr,
     getOptionLabel: option => `${option[props.opvalf]} ${option[props.opval]}`
   });
-  return ( 
+  
+  return (
     <div>
       <div {...getRootProps()}>
         <label className="textnavy"><nobr>{label}</nobr></label>
