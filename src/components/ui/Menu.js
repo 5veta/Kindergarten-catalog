@@ -7,14 +7,16 @@ const Menu=({isLogin, login, lang})=>{
   return (
   
     <nav class="navbar navbar-expand-md row">
-    <a className="navbar-brand text-reset text-uppercase" href="/">
-        <img class="childrenimg mr-5" src="/children.png" />
-        
-      </a>
+    
       <button class="navbar-toggler d-block d-sm-block d-md-none ml-5" data-toggle="collapse" data-target="#mainmenu" >
         &#9776;
       </button>
       <div id="mainmenu" class="collapse navbar-collapse">
+        <div>
+      <a className="navbar-brand text-reset text-uppercase" href="/">
+        <img class="childrenimg mr-5" src="/children.png" />
+        
+      </a></div>
         <span class="navbar-text textnavy text-uppercase">Приватний дитячий садок</span>
         <ul className="navbar-nav navbar-center text-nowrap text-black  my-4 textnavy">
       
