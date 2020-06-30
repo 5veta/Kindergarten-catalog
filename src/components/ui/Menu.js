@@ -5,6 +5,7 @@ import Button from './Button';
 const Menu=({isLogin, login, lang})=>{
     
   return (
+    <div class="container">
   <div class="d-flex flex-row justify-content-between">
     <nav className="navbar navbar-expand-md row">
       
@@ -52,6 +53,7 @@ const Menu=({isLogin, login, lang})=>{
 
       </div>
     </nav>
+  </div>
   </div>
 
   );
