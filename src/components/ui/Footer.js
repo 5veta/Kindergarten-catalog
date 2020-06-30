@@ -6,8 +6,8 @@ import {Link} from 'react-router-dom';
 const Footer=({lang, isLogin})=>{
     
     return (
-        <div class="d-flex bgstyle justify-content-center">
-            <div className="flex-fill bgstyle d-flex flex-row justify-content-start justify-content-md-between ">
+        <div class="d-flex bgstyle justify-content-center py-2">
+            <div className="bgstyle d-flex flex-row justify-content-start justify-content-md-between ">
             <div className=" " >
                 <div>
                 {
@@ -21,7 +21,7 @@ const Footer=({lang, isLogin})=>{
             <div className="" >kindergartens.pro@gmail.com</div>
             <div className="d-flex justify-content-start justify-content-md-end " >Copyright: 5vet@</div>
             </div>
-    </div>
+    </div> 
     );
 };
 
