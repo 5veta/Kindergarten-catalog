@@ -6,22 +6,22 @@ import {Link} from 'react-router-dom';
 const Footer=({lang, isLogin})=>{
     
     return (
-        <div class="d-flex bgstyle justify-content-center py-2">
-            <div className="bgstyle d-flex flex-row justify-content-start justify-content-md-between ">
-            <div className=" " >
+        <div class="d-flex justify-content-md-center bgstyle py-2">
+            <div className="bgstyle w-75 d-flex flex-row justify-content-start justify-content-md-between ">
+                
                 <div>
-                {
+                {   
                     (isLogin)?
                         <LogoutF/>:
                         <Button text={lang.login.text} link={lang.login.link} />
                 }
-                </div>
+                </div>    
                 
+                
+                <div className="" >kindergartens.pro@gmail.com</div>
+                <div className="d-flex justify-content-start justify-content-md-end " >Copyright: 5vet@</div>
             </div>
-            <div className="" >kindergartens.pro@gmail.com</div>
-            <div className="d-flex justify-content-start justify-content-md-end " >Copyright: 5vet@</div>
-            </div>
-    </div> 
+        </div> 
     );
 };
 
