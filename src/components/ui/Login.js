@@ -56,7 +56,7 @@ const Login=({islogin, login, onCheckUser=f=>f, lang})=>{
     };
     
     return (
-      <div className="d-flex align-items-start vh-100 bg-light">
+      <div className="d-flex align-items-start bg-light">
       
       {(islogin && login==='admin')?
         <Redirect to="/admin" />:(islogin)?<Redirect to="/accaunt" />:
