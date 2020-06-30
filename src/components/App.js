@@ -10,7 +10,7 @@ const App =()=>
         <Switch>
                 <Route exact path="/moder" component={LoginAF}/>        
                 <Route path="/" component={()=>(
-                        <div className="min-vh-100">
+                        <div>
                         <MenuC />
                         <Switch>
                                 <Route exact path="/" component={FormtoSel}/>
