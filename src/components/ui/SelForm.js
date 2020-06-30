@@ -143,7 +143,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  history, match, kgardens=[
                 </div>
             </div>
             <div className="d-flex justify-content-md-center my-0 my-sm-0 my-md-4 ml-2 ml-md-0">
-                <div className="w-75 justify-content-md-center" >
+                <div className="w-75 text-center" >
                     <h5 className="textnavy">{lang.text}</h5>
                 </div>
             </div>
