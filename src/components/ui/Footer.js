@@ -6,9 +6,9 @@ import {Link} from 'react-router-dom';
 const Footer=({lang, isLogin})=>{
     
     return (
-    <div className="row justify-content-md-center bgstyle h-100">
-        <div className="d-flex flex-column flex-md-row align-items-md-center bgstyle p-3 pl-md-3 w-75 ml-2 ml-md-0">
-            <div className="flex-fill " >
+        <div class="d-flex bgstyle justify-content-center">
+            <div className="flex-fill bgstyle d-flex flex-row justify-content-start justify-content-md-between ">
+            <div className=" " >
                 <div>
                 {
                     (isLogin)?
@@ -18,9 +18,9 @@ const Footer=({lang, isLogin})=>{
                 </div>
                 
             </div>
-            <div className="flex-fill" >kindergartens.pro@gmail.com</div>
+            <div className="" >kindergartens.pro@gmail.com</div>
             <div className="d-flex justify-content-start justify-content-md-end " >Copyright: 5vet@</div>
-        </div>
+            </div>
     </div>
     );
 };
