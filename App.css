@@ -4,6 +4,12 @@
 
 .selform{
     border-color: #3b5f82;
+    color: #3b5f82;
+}
+
+.selform-selected{
+    background: #3b5f82;
+    color: white;
 }
 
 .mbuttons{
