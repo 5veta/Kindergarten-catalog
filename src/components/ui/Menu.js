@@ -5,9 +5,9 @@ import Button from './Button';
 const Menu=({isLogin, login, lang})=>{
     
   return (
-  <div class="d-flex justify-content-md-center">
+  <div class="d-flex">
     
-    <nav class="navbar navbar-expand-md row justify-content-between">
+    <nav class="flex-fill d-flex navbar navbar-expand-md row justify-content-between">
     <div>
     <a className="text-reset text-uppercase" href="/">
         <img class="childrenimg mr-5" src="/children.png" />
