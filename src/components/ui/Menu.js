@@ -5,12 +5,13 @@ import Button from './Button';
 const Menu=({isLogin, login, lang})=>{
     
   return (
-  <div class="d-flex justify-content-md-center">
+  <div class="d-flex justify-content-between">
     <nav class="navbar navbar-expand-md row">
     
       <a className="navbar-brand text-reset text-uppercase" href="/">
-        <span class="textnavy">ПРИВАТНІ ДИТЯЧІ САДОЧКИ</span>
+        
         <img class="childrenimg mr-5" src="/children.png" />
+        <span class="textnavy">ПРИВАТНІ ДИТЯЧІ САДОЧКИ</span>
       </a>
       <button class="navbar-toggler d-block d-sm-block d-md-none ml-5" data-toggle="collapse" data-target="#mainmenu" >
         &#9776;
