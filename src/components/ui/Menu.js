@@ -9,8 +9,8 @@ const Menu=({isLogin, login, lang})=>{
     <nav class="navbar navbar-expand-md row">
     
       <a className="navbar-brand text-reset text-uppercase" href="/">
-        <span class="d-none d-sm-none d-md-block textnavy">{lang.logo}</span>
-        <img class="d-block d-sm-block d-md-none childrenimg mr-5" src="/children.png" />
+        <span class="textnavy">ПРИВАТНІ ДИТЯЧІ САДОЧКИ</span>
+        <img class="childrenimg mr-5" src="/children.png" />
       </a>
       <button class="navbar-toggler d-block d-sm-block d-md-none ml-5" data-toggle="collapse" data-target="#mainmenu" >
         &#9776;
