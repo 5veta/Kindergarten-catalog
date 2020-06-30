@@ -25,7 +25,7 @@ const Menu=({isLogin, login, lang})=>{
         &#9776;
       </button>
       <div id="mainmenu" class="collapse navbar-collapse">
-        <span class="navbar-text textnavy text-uppercase">Приватний дитячий садок</span>
+        
         <ul className="navbar-nav navbar-center text-nowrap text-black  my-4 textnavy">
       
           <li className="nav-item ">

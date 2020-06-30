@@ -136,12 +136,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  history, match, kgardens=[
     return(
         <div className="d-flex align-items-start h-100 bg-light pb-4" >
         <div className="flex-fill d-flex flex-column justify-content-md-center ">
-            <div className="d-none d-sm-none d-md-block">
-                <HeaderPicture lang={lang} />
-            </div>
-            <div className="d-flex justify-content-start d-block d-sm-block d-md-none ml-2">
-                <h3 className="headertext">{lang.maineheader}</h3>
-            </div>
+            
             <div className="d-flex justify-content-md-center my-0 my-sm-0 my-md-4 ml-2 ml-md-0">
                 <div className="w-75" >
                     <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang.form} classHandler={classHandler}/>
