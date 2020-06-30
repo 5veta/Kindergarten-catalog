@@ -52,8 +52,8 @@ const buildHTMLPage = ({html, state}) => `
         <style>${mystaticCSS}</style>
         
     </head>
-    <body>
-        <div id="react-container">${html}</div>
+    <body class="min-vh-100">
+        <div id="react-container" >${html}</div>
         <script>
             window.__INITIAL_STATE__ = ${JSON.stringify(state)}
         </script>
