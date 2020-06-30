@@ -5,19 +5,17 @@ import Button from './Button';
 const Menu=({isLogin, login, lang})=>{
     
   return (
-  <div class="d-flex flex-row justify-content-between">
-    <nav className="navbar navbar-expand-md row">
+  
+    <nav class="navbar navbar-expand-md row">
     <a className="navbar-brand text-reset text-uppercase" href="/">
         <img class="childrenimg mr-5" src="/children.png" />
-        <span class="textnavy">Приватний дитячий садок</span>
+        
       </a>
-    </nav>
-    <nav class="navbar navbar-expand-md row">
-    
       <button class="navbar-toggler d-block d-sm-block d-md-none ml-5" data-toggle="collapse" data-target="#mainmenu" >
         &#9776;
       </button>
       <div id="mainmenu" class="collapse navbar-collapse">
+        <span class="navbar-text textnavy text-uppercase">Приватний дитячий садок</span>
         <ul className="navbar-nav navbar-center text-nowrap text-black  my-4 textnavy">
       
           <li className="nav-item ">
@@ -44,7 +42,6 @@ const Menu=({isLogin, login, lang})=>{
 
       </div>
     </nav>
-  </div>
 
   );
 };
