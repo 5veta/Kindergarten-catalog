@@ -142,6 +142,11 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  history, match, kgardens=[
                     <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang.form} classHandler={classHandler}/>
                 </div>
             </div>
+            <div className="d-flex justify-content-md-center my-0 my-sm-0 my-md-4 ml-2 ml-md-0">
+                <div className="w-75" >
+                    <span>{lang.text}</span>
+                </div>
+            </div>
             <div className="d-flex justify-content-md-center ml-2 ml-md-0">
             {(rdiloc.length>0)?
                 <div className="w-75">

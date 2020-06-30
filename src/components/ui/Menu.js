@@ -17,7 +17,7 @@ const Menu=({isLogin, login, lang})=>{
     <nav className="navbar navbar-expand-md row">
       
       <a className="navbar-brand text-reset text-uppercase" href="/">
-        <span class="textnavy">Приватний дитячий садок</span>
+        <span class="textnavy">{lang.maineheader}</span>
       </a>
     </nav>
     <nav class="navbar navbar-expand-md row">

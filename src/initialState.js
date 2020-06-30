@@ -160,6 +160,7 @@ export let initialState={
     massage: "Пароль змінено."
    },
    menu:{
+    maineheader: "Приватні дитячі садочки",
     logo: "KINDERGARTENS.pro",
     about: "Про нас",
     newkg: "Додати новий",
@@ -169,7 +170,7 @@ export let initialState={
     enter: "Увійти"
    },
    selkg:{
-    maineheader: "Приватні дитячі садочки",
+    text: "Оберіть садочок у вашому місті",
     form:{
      country: "Країна",
      region: "Область",
@@ -293,6 +294,7 @@ export let initialState={
     massage: "Password have been changed."
    },
    menu:{
+    maineheader: "Private preschools",
     logo: "KINDERGARTENS.pro",
     about: "About",
     login: {text: "Login", link: "/login"},
@@ -300,9 +302,8 @@ export let initialState={
     logout: "Logout",
     enter: "Enter"
    },
-   nlesson:{},
    selkg:{
-    maineheader: "Private preschools.",
+    text: "Choose preschool in your city",
     form:{
      country: "Select country",
      region: "Select region",
@@ -427,6 +428,7 @@ export let initialState={
     massage: "Пароль изменен."
    },
    menu:{
+    maineheader: "Частные детские садики",
     logo: "KINDERGARTENS.pro",
     about: "О нас",
     newkg: "Добавить новый",
@@ -436,7 +438,7 @@ export let initialState={
     enter: "Войти"
    },
    selkg:{
-    maineheader: "Частные детские садики",
+    text: "Найди садик в своем городе",
     form:{
      country: "Страна",
      region: "Область",
