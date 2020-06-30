@@ -9,7 +9,7 @@ const Menu=({isLogin, login, lang})=>{
     <nav className="navbar navbar-expand-md row">
     <a className="navbar-brand text-reset text-uppercase" href="/">
         <img class="childrenimg mr-5" src="/children.png" />
-        <span class="textnavy">ПРИВАТНІ ДИТЯЧІ САДОЧКИ</span>
+        <span class="textnavy">Приватний дитячий садок</span>
       </a>
     </nav>
     <nav class="navbar navbar-expand-md row">
