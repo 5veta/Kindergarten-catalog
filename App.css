@@ -1,3 +1,12 @@
+a { 
+    text-decoration: none;
+    font-weight: bold;
+    color: #3b5f82;
+}
+
+a:hover { text-decoration: underline; }
+
+
 .childrenimg{
     height: 150px;
 }
