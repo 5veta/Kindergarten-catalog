@@ -67,7 +67,7 @@ const CreateAccount=({islogined, onAddUser=f=>f, lang})=>{
       <div>
       {(islogined)?
         <Redirect to="/accaunt" />:
-        <div className="row justify-content-center">
+        <div className="min-vh-75 row justify-content-center">
           <div className="flex-row p-2  col-5 ">
             <h5 className="" style={{color: "#3b5f82"}}>{lang.header}</h5>
             <CreateAccountReduxForm onSubmit={onSubmit} lang={lang}/>

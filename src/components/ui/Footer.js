@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 const Footer=({lang, isLogin})=>{
     
     return (
-        <div class="d-flex justify-content-md-center bgstyle">
+        <div class="min-vh-25 d-flex justify-content-md-center bgstyle">
             <div className="bgstyle w-75 py-2 d-flex flex-row justify-content-start align-middle justify-content-md-between ">
                 
                 <div>
