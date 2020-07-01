@@ -60,7 +60,7 @@ const Login=({islogin, login, onCheckUser=f=>f, lang})=>{
       
       {(islogin && login==='admin')?
         <Redirect to="/admin" />:(islogin)?<Redirect to="/accaunt" />:
-        <div className="p-2 w-50 d-flex flex-column justify-content-center">
+        <div className="p-2 w-100 w-sm-100 w-md-50 d-flex flex-column justify-content-center">
           
             <div className="flex-fill"><h5 className="textnavy">{lang.header}</h5></div>
             <div className="flex-fill"><LoginReduxForm onSubmit={onSubmit} lang={lang} /></div>
