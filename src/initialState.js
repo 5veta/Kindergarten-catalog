@@ -170,7 +170,7 @@ export let initialState={
     enter: "Увійти"
    },
    selkg:{
-    text: "У меню, вказаному вище, ви можете обрати країну та регіон, де ви хочете переглянути приватні дитячі садочки. А також звузити коло пошуку, вказавши місто чи село",
+    text: "Знайдить свій приватний садок. Для цього потрібно обрати країну та регіон. Звузити коло пошуку можна вказавши місто чи село",
     form:{
      country: "Країна",
      region: "Область",
@@ -303,7 +303,7 @@ export let initialState={
     enter: "Enter"
    },
    selkg:{
-    text: "In the menu above you can select the country and the region where you want to review preschools. Additionally you may select the town.",
+    text: "Find you Kindergarten. For this you should select the country and the region where you want to review preschools. Additionally you may select the town.",
     form:{
      country: "Select country",
      region: "Select region",
@@ -438,7 +438,7 @@ export let initialState={
     enter: "Войти"
    },
    selkg:{
-    text: "Выберите страну и область, с частными садиками которых вы хотите ознакомится. Можно дополнительно выбрать город или поселок, которые вас интересуют",
+    text: "Найдите свой частный детский сад. Для этого нужно выбрать страну и область. А чтобы сузить круг поиска дополнительно можно указать город или поселок.",
     form:{
      country: "Страна",
      region: "Область",
