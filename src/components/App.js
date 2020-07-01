@@ -7,7 +7,7 @@ import '../../App.css';
 
 
 const App =()=>
-        <div className="vh-100">
+        
         <Switch>
                 <Route exact path="/moder" component={LoginAF}/>        
                 <Route path="/" component={()=>(
@@ -30,5 +30,4 @@ const App =()=>
                         </div>
                 )}/>
         </Switch>
-        </div>
 export default App;
