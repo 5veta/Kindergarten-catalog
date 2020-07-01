@@ -11,7 +11,7 @@ const App =()=>
         <Switch>
                 <Route exact path="/moder" component={LoginAF}/>        
                 <Route path="/" component={()=>(
-                        <div className="vh-100">
+                        <div className="mh-100">
                         <MenuC />
                         <Switch>
                                 <Route exact path="/" component={FormtoSel}/>
