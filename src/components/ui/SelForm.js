@@ -134,7 +134,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  history, match, kgardens=[
     };
     
     return(
-        <div className="min-vh-75 d-flex bg-light pb-4 m-0" >
+        <div className="min-vh-100 d-flex bg-light pb-4 m-0" >
         <div className="flex-fill d-flex flex-column justify-content-md-center ">
             
             <div className="d-flex justify-content-md-center my-0 my-sm-0 my-md-4 ml-2 ml-md-0">
