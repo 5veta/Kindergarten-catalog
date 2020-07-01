@@ -6,7 +6,7 @@ const Menu=({isLogin, login, lang})=>{
     
   return (
     <div class="d-flex justify-content-md-center">
-      <div class="w-75 d-flex flex-row justify-content-between">
+      <div class="w-50 d-flex flex-row justify-content-between">
         <nav className="navbar navbar-expand-md row">
           <a className="navbar-brand text-reset " href="/">
             <img class="d-none d-sm-none d-md-block childrenimg mr-5" src="/children.png" />
