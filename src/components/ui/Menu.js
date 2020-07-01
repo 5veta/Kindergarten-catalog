@@ -5,8 +5,8 @@ import Button from './Button';
 const Menu=({isLogin, login, lang})=>{
     
   return (
-    <div class="container">
-  <div class="d-flex flex-row justify-content-between">
+    <div class="d-flex  justify-content-md-center">
+  <div class="w-75 d-flex flex-row justify-content-between">
     <nav className="navbar navbar-expand-md row">
       
     <a className="navbar-brand text-reset text-uppercase" href="/">

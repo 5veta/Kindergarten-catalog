@@ -18,8 +18,8 @@ const Footer=({lang, isLogin})=>{
                 </div>    
                 
                 
-                <div className="" >kindergartens.pro@gmail.com</div>
-                <div className="d-flex justify-content-start justify-content-md-end " >Copyright: 5vet@</div>
+                <div className="m-1" >kindergartens.pro@gmail.com</div>
+                <div className="m-1 d-flex justify-content-start justify-content-md-end " >Copyright: 5vet@</div>
             </div>
         </div> 
     );
