@@ -6,10 +6,11 @@ const Menu=({isLogin, login, lang})=>{
     
   return (
     <div class="d-flex justify-content-md-center">
-      <div class="w-75 d-flex flex-row justify-content-between">
+      <div class="w-75 d-flex justify-content-md-between">
         <nav className="navbar navbar-expand-md row">
           <a className="navbar-brand text-reset text-uppercase" href="/">
-            <img class="childrenimg mr-5" src="/children.png" />
+            <img class="d-none d-sm-none d-md-block childrenimg mr-5" src="/children.png" />
+            <img class="d-block d-sm-block d-md-none childrenimg-small mr-5" src="/children.png" />
           </a>
         </nav>
         <nav className="navbar navbar-expand-md row">
