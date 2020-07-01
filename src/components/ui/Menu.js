@@ -15,7 +15,7 @@ const Menu=({isLogin, login, lang})=>{
         </nav>
         <nav className="navbar navbar-expand-md row">
           <a className="navbar-brand text-reset " href="/">
-            <h3 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h3>
+            
           </a>
         </nav>
         <nav class="navbar navbar-expand-md row">
