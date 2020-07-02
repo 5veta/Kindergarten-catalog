@@ -23,6 +23,9 @@ const Menu=({isLogin, login, lang})=>{
               </li>
               <li className="nav-item ">
                 <ul className="navbar-nav navbar-center text-nowrap text-black  my-4 textnavy">
+                  <li className="d-block d-sm-block d-md-none nav-item ">
+                    <a href="/">{lang.home}</a>
+                  </li>
                   <li className="nav-item ">
                   {
                     (login==='admin')?
