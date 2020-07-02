@@ -15,7 +15,8 @@ const Menu=({isLogin, login, lang})=>{
           <div id="mainmenu" class="collapse navbar-collapse">
             <ul className="nav flex-column  my-4 textnavy">
             <li className="nav-item "><a className="navbar-brand text-reset " href="/">
-            <h2 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h2>
+            <h1 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h1><br />
+            <span>Знайдить свій приватний садок. Для цього потрібно обрати країну та регіон. Звузити коло пошуку можна вказавши місто чи село.</span>
           </a></li>
               <li className="nav-item ">
                 <ul className="navbar-nav navbar-center text-nowrap text-black  my-4 textnavy">
