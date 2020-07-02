@@ -14,6 +14,10 @@ module.exports = {
         sourceMapFilename: "bundle.map"
     },
     devtool: "#source-map",
+    devServer: {
+        contentBase: './dist',
+        hot: true,
+    },
     module: {
         rules: [
             {
