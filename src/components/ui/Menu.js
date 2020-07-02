@@ -13,7 +13,7 @@ const Menu=({isLogin, login, lang})=>{
             &#9776;
           </button>
           <div id="mainmenu" class="collapse navbar-collapse">
-            <ul className="nav flex-column my-4 textnavy">
+            <ul className="nav flex-column my-4 textnavy pt-2">
               <li className="nav-item">
                 <a className=" text-reset text-decoration-none" href="/">
                   <h1 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h1>
@@ -49,7 +49,7 @@ const Menu=({isLogin, login, lang})=>{
             </ul>
           </div>
         </nav>
-        <nav className="navbar navbar-expand-md pb-2">
+        <nav className="navbar navbar-expand-md">
           <a className="navbar-brand text-reset " href="/">
             <img class="d-none d-sm-none d-md-block childrenimg mr-5" src="/children.png" />
             <img class="d-block d-sm-block d-md-none childrenimg-small mr-5" src="/children.png" />
