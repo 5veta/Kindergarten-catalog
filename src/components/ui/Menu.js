@@ -15,7 +15,7 @@ const Menu=({isLogin, login, lang})=>{
           <div id="mainmenu" class="collapse navbar-collapse">
             <ul className="nav flex-column my-4 textnavy pt-2">
               <li className="nav-item">
-                <a className=" text-reset text-decoration-none" href="/">
+                <a className="d-none d-sm-none d-md-block text-reset text-decoration-none" href="/">
                   <h1 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h1>
                   <br />
                   <span>{lang.text}</span>
