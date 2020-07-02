@@ -13,10 +13,10 @@ const Menu=({isLogin, login, lang})=>{
             <img class="d-block d-sm-block d-md-none childrenimg-small mr-5" src="/children.png" />
           </a>
         </nav>
-        <nav className="col-1 navbar navbar-expand-md row">
-          <a className="navbar-brand text-reset " href="/">
-            <h3 class="col-1 m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h3>
-          </a>
+        <nav className="navbar navbar-expand-md row">
+          <div className="col-1"><a className="navbar-brand text-reset " href="/">
+            <h3 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h3>
+          </a></div>
         </nav>
         <nav class="navbar navbar-expand-md row">
           <button class="navbar-toggler d-block d-sm-block d-md-none ml-5" data-toggle="collapse" data-target="#mainmenu" >
