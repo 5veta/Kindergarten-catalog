@@ -8,13 +8,13 @@ const Menu=({isLogin, login, lang})=>{
     <div class="d-flex justify-content-md-center">
       <div class="w-75 d-flex flex-row justify-content-between">
         
-        <nav class="navbar navbar-expand-md row">
+        <nav class="navbar navbar-expand-md">
           <button class="navbar-toggler d-block d-sm-block d-md-none ml-5" data-toggle="collapse" data-target="#mainmenu" >
             &#9776;
           </button>
           <div id="mainmenu" class="collapse navbar-collapse">
             <ul className="nav flex-column  my-4 textnavy">
-            <li className="nav-item "><a className="navbar-brand text-reset " href="/">
+            <li className="nav-item"><a className="navbar-brand text-reset " href="/">
             <h1 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h1><br />
             <span>Знайдить свій приватний садок. Для цього потрібно обрати країну та регіон. Звузити коло пошуку можна вказавши місто чи село.</span>
           </a></li>
@@ -46,7 +46,7 @@ const Menu=({isLogin, login, lang})=>{
             </ul>
           </div>
         </nav>
-        <nav className="navbar navbar-expand-md row">
+        <nav className="navbar navbar-expand-md ">
           <a className="navbar-brand text-reset " href="/">
             <img class="d-none d-sm-none d-md-block childrenimg mr-5" src="/children.png" />
             <img class="d-block d-sm-block d-md-none childrenimg-small mr-5" src="/children.png" />
