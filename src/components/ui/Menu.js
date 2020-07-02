@@ -8,7 +8,7 @@ const Menu=({isLogin, login, lang})=>{
     <div class="d-flex justify-content-md-center">
       <div class="w-75 d-flex flex-row justify-content-between">
         
-        <nav class="navbar navbar-expand-md">
+        <nav class="navbar navbar-expand-md col-7">
           <button class="navbar-toggler d-block d-sm-block d-md-none ml-5" data-toggle="collapse" data-target="#mainmenu" >
             &#9776;
           </button>
