@@ -8,12 +8,12 @@ const Menu=({isLogin, login, lang})=>{
     <div class="d-flex justify-content-md-center">
       <div class="w-75 d-flex flex-row justify-content-between">
         
-        <nav class="navbar navbar-expand-md col-7">
+        <nav class="navbar navbar-expand-md col-7 mt-2">
           <button class="navbar-toggler d-block d-sm-block d-md-none ml-5" data-toggle="collapse" data-target="#mainmenu" >
             &#9776;
           </button>
           <div id="mainmenu" class="collapse navbar-collapse">
-            <ul className="nav flex-column my-4 textnavy pt-2">
+            <ul className="nav flex-column my-4 textnavy">
               <li className="nav-item">
                 <a className="d-none d-sm-none d-md-block text-reset text-decoration-none" href="/">
                   <h1 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h1>
