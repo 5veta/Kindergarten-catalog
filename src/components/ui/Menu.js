@@ -14,6 +14,9 @@ const Menu=({isLogin, login, lang})=>{
           </button>
           <div id="mainmenu" class="collapse navbar-collapse">
             <ul className="nav flex-column  my-4 textnavy">
+            <li className="nav-item "><a className="navbar-brand text-reset " href="/">
+            <h2 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h2>
+          </a></li>
               <li className="nav-item ">
                 <ul className="navbar-nav navbar-center text-nowrap text-black  my-4 textnavy">
               <li className="nav-item ">
@@ -38,9 +41,7 @@ const Menu=({isLogin, login, lang})=>{
               </li>
               </ul>
               </li>
-              <li className="nav-item "><a className="navbar-brand text-reset " href="/">
-            <h3 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h3>
-          </a></li>
+              
             </ul>
           </div>
         </nav>
