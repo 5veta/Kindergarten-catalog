@@ -161,6 +161,7 @@ export let initialState={
    },
    menu:{
     maineheader: "Приватні дитячі садочки",
+    text: "Знайдить свій приватний садок, обравши країну та регіон. Зареєстровані користувачі можут додати новий садочок, якщо його немає в каталозі.",
     logo: "KINDERGARTENS.pro",
     about: "Про нас",
     newkg: "Додати новий",
@@ -170,7 +171,7 @@ export let initialState={
     enter: "Увійти"
    },
    selkg:{
-    text: "Знайдить свій приватний садок. Для цього потрібно обрати країну та регіон. Звузити коло пошуку можна вказавши місто чи село",
+    text: "Знайдить свій приватний садок, обравши країну та регіон. Зареєстровані користувачі можут додати новий садочок, якщо його немає в каталозі.",
     form:{
      country: "Країна",
      region: "Область",
@@ -295,6 +296,7 @@ export let initialState={
    },
    menu:{
     maineheader: "Private preschools",
+    text: "Find you Kindergarten. For this you should select the country and the region where you want to review preschools. It is also possible to add a new kindergarten for an authorized user.",
     logo: "KINDERGARTENS.pro",
     about: "About",
     login: {text: "Login", link: "/login"},
@@ -303,7 +305,7 @@ export let initialState={
     enter: "Enter"
    },
    selkg:{
-    text: "Find you Kindergarten. For this you should select the country and the region where you want to review preschools. Additionally you may select the town.",
+    text: "Find you Kindergarten. For this you should select the country and the region where you want to review preschools. It is also possible to add a new kindergarten for an authorized user.",
     form:{
      country: "Select country",
      region: "Select region",
@@ -429,6 +431,7 @@ export let initialState={
    },
    menu:{
     maineheader: "Частные детские садики",
+    text: "Найдите свой частный детский сад. Для этого нужно выбрать страну и область. Зарегистрировавшись, можно добавить свой садик, если его нет в каталоге.",
     logo: "KINDERGARTENS.pro",
     about: "О нас",
     newkg: "Добавить новый",
@@ -438,7 +441,7 @@ export let initialState={
     enter: "Войти"
    },
    selkg:{
-    text: "Найдите свой частный детский сад. Для этого нужно выбрать страну и область. А чтобы сузить круг поиска дополнительно можно указать город или поселок.",
+    text: "Найдите свой частный детский сад. Для этого нужно выбрать страну и область. Зарегистрировавшись, можно добавить свой садик, если его нет в каталоге.",
     form:{
      country: "Страна",
      region: "Область",

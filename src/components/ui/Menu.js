@@ -14,33 +14,36 @@ const Menu=({isLogin, login, lang})=>{
           </button>
           <div id="mainmenu" class="collapse navbar-collapse">
             <ul className="nav flex-column my-4 textnavy">
-            <li className="nav-item"><a className=" text-reset " href="/">
-            <h1 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h1><br />
-            <span>Знайдить свій приватний садок. Для цього потрібно обрати країну та регіон. Звузити коло пошуку можна вказавши місто чи село.</span>
-          </a></li>
+              <li className="nav-item">
+                <a className=" text-reset " href="/">
+                  <h1 class="m-0 p-0 d-none d-sm-none d-md-block textnavy">{lang.maineheader}</h1>
+                  <br />
+                  <span>{lang.text}</span>
+                </a>
+              </li>
               <li className="nav-item ">
                 <ul className="navbar-nav navbar-center text-nowrap text-black  my-4 textnavy">
-              <li className="nav-item ">
-              {
-              (login==='admin')?
-                <a className="nav-link text-reset" href="/admin">{lang.enter}</a>:
-                  isLogin?
-                  <a className="text-reset nav-link" href="/accaunt">{lang.enter}</a>:
-                  <Button text={lang.login.text} link={lang.login.link} />
-              }
-              </li>
-              <li className="nav-item">
-              {
-                (login==='admin')?
-                  <LogoutF />:
-                  (isLogin)?<LogoutF />:
-                    <div></div>
-              }
-              </li>
-              <li className="nav-item mx-sm-0 mx-md-2 my-2 my-sm-2 my-md-0">
-                <LangMenu />
-              </li>
-              </ul>
+                  <li className="nav-item ">
+                  {
+                    (login==='admin')?
+                      <a className="nav-link text-reset" href="/admin">{lang.enter}</a>:
+                      isLogin?
+                        <a className="text-reset nav-link" href="/accaunt">{lang.enter}</a>:
+                        <Button text={lang.login.text} link={lang.login.link} />
+                  }
+                  </li>
+                  <li className="nav-item">
+                  {
+                    (login==='admin')?
+                      <LogoutF />:
+                      (isLogin)?
+                        <LogoutF />:<div></div>
+                  }
+                  </li>
+                  <li className="nav-item mx-sm-0 mx-md-2 my-2 my-sm-2 my-md-0">
+                    <LangMenu />
+                  </li>
+                </ul>
               </li>
               
             </ul>
