@@ -3,18 +3,16 @@ dotenv.config();
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
-import fs from 'fs';
+import {storeFactory} from '../store';
 import router from './routes/clients';
 import moder from './routes/admin';
 import session from 'express-session';
 import {respond, logger, addStoreToRequestPipeline} from './middlewares';
 import {initialState} from '../initialState.js';
+
 const app=express();
 
-const staticCSS = fs.readFileSync(path.join(__dirname, '../../node_modules/bootstrap/dist/css/bootstrap.min.css'));
-const mystaticCSS = fs.readFileSync(path.join(__dirname, '../../App.css'));
-const staticJQ=fs.readFileSync(path.join(__dirname, '../../node_modules/jquery/dist/jquery.min.js'));
-const staticJS = fs.readFileSync(path.join(__dirname, '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'));
+
 const fileAssets = express.static(path.join(__dirname, '../../dist/assets/'));
 
 const serverStore=storeFactory(true, initialState());

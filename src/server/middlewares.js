@@ -2,7 +2,12 @@ import { Provider } from 'react-redux';
 import { compose } from 'redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
+import fs from 'fs';
 
+const staticCSS = fs.readFileSync(path.join(__dirname, '../../node_modules/bootstrap/dist/css/bootstrap.min.css'));
+const mystaticCSS = fs.readFileSync(path.join(__dirname, '../../App.css'));
+const staticJQ=fs.readFileSync(path.join(__dirname, '../../node_modules/jquery/dist/jquery.min.js'));
+const staticJS = fs.readFileSync(path.join(__dirname, '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'));
 
 
 export const logger = (req, res, next) => {
