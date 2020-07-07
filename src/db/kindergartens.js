@@ -38,7 +38,7 @@ export const selectuserkgs=(id)=>{
 export const selectallkgardens=()=>{
     return pool
        .query(`SELECT kgid, img, name, descr, site, phonen, time, age, price, json_build_object('aid', addresses.aid, 'house',house,'appt', appt,'floor', floor,'sid', sid) as address, lessons FROM kgardens, addresses WHERE kgardens.aid=addresses.aid AND checked=true`)
-       .then(result =>result.rows)
+       .then(result =>(result.rows.length>0)?result.rows:[])
        .catch(err => console.error('Error executing query', err.stack));
 };
 

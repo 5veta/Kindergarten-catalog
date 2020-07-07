@@ -7,5 +7,5 @@ global.React = React;
 app.set('port', process.env.PORT || 80)
     .listen(
         app.get('port'),
-        () => console.log(`Kids gardens catalog running at 'http://localhost:${app.get('port')}'`)
+        () => console.log(`Kindergartens catalog running at 'http://localhost:${app.get('port')}'`)
     );
