@@ -2,7 +2,7 @@ import {selectallcountries, selectallregions, selectallregsdistricts, selectalll
 import {selectallkgardens} from './db/kindergartens';
 
 const initialState=async()=>{
-    return {
+    return ({
         files: {},
         kgardens: await selectallkgardens().catch(error => console.error(`Kgardens: ${error}`)),
         countries:await selectallcountries().catch(error => console.error(`Country: ${error}`)),
@@ -429,7 +429,7 @@ const initialState=async()=>{
         }
         }
         }
-    };
+    });
 };
 
 export default initialState;
