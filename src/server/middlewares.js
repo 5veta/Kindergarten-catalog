@@ -2,6 +2,7 @@ import { Provider } from 'react-redux';
 import { compose } from 'redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
+import storeFactory from '../store';
 import fs from 'fs';
 import path from 'path';
 const staticCSS = fs.readFileSync(path.join(__dirname, '../../node_modules/bootstrap/dist/css/bootstrap.min.css'));

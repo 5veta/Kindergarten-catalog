@@ -439,7 +439,7 @@ const getDataFromDB=async()=>{
     initialState.streets=await selectallstreets().catch(error => console.error(`Streets: ${error}`));
 };
 
-const getinitialState=()=>{
+export const getinitialState=()=>{
     getDataFromDB();
     return initialState;
 };
