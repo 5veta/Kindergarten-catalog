@@ -1,7 +1,7 @@
 import {selectallcountries, selectallregions, selectallregsdistricts, selectalllocations, selectalltowndistricts, selectallstreets} from './db/addresses';
 import {selectallkgardens} from './db/kindergartens';
 
-let initialState={
+export const initialState={
     files: {},
     kgardens: [],
     countries:[],
@@ -444,4 +444,3 @@ const getinitialState=()=>{
     return initialState;
 };
 
-export default getinitialState;
