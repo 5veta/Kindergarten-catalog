@@ -3,12 +3,12 @@ dotenv.config();
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
-import {storeFactory} from '../store';
+import storeFactory from '../store';
 import router from './routes/clients';
 import moder from './routes/admin';
 import session from 'express-session';
 import {respond, logger, addStoreToRequestPipeline} from './middlewares';
-import {initialState} from '../initialState.js';
+import {initialState} from '../initialState';
 
 const app=express();
 const fileAssets = express.static(path.join(__dirname, '../../dist/assets/'));
