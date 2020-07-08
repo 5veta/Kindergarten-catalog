@@ -11,10 +11,8 @@ import {respond, logger, addStoreToRequestPipeline} from './middlewares';
 import initialState from '../initialState.js';
 
 const app=express();
-
-
 const fileAssets = express.static(path.join(__dirname, '../../dist/assets/'));
-
+const initialState=initialState();
 const serverStore=storeFactory(true, initialState());
 
 app.use(bodyParser.json());
