@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux';
 import { compose } from 'redux';
 import { StaticRouter } from 'react-router-dom';
+import App from '../components/App';
 import { renderToString } from 'react-dom/server';
 import storeFactory from '../store';
 import fs from 'fs';

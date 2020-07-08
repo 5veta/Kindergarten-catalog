@@ -15,7 +15,6 @@ const fileAssets = express.static(path.join(__dirname, '../../dist/assets/'));
 const serverStore=storeFactory(true, initialState);
 dispatchDataFromDB(serverStore);
 
-console.log('initialState: '+JSON.stringify(serverStore.getState()));
 
 app.use(bodyParser.json());
 app.use(logger);
