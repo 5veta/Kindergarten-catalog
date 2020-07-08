@@ -12,7 +12,7 @@ import initialState from '../initialState.js';
 
 const app=express();
 const fileAssets = express.static(path.join(__dirname, '../../dist/assets/'));
-console.log(JSON.stringify(initialState));
+console.log('initialState: '+JSON.stringify(initialState));
 const serverStore=storeFactory(true, initialState);
 
 app.use(bodyParser.json());
