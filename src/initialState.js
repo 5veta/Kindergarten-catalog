@@ -1,6 +1,6 @@
 import {selectallcountries, selectallregions, selectallregsdistricts, selectalllocations, selectalltowndistricts, selectallstreets} from './db/addresses';
 import {selectallkgardens} from './db/kindergartens';
-import C from '../constants';
+import C from './constants';
 
 export let initialState={
     files: {},
