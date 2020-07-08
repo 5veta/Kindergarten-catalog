@@ -8,12 +8,12 @@ import router from './routes/clients';
 import moder from './routes/admin';
 import session from 'express-session';
 import {respond, logger, addStoreToRequestPipeline} from './middlewares';
-import initialState from '../initialState.js';
+import getinitialState from '../initialState.js';
 
 const app=express();
 const fileAssets = express.static(path.join(__dirname, '../../dist/assets/'));
-const initialState=initialState();
-const serverStore=storeFactory(true, initialState());
+const initialState=getinitialState();
+const serverStore=storeFactory(true, initialState);
 
 app.use(bodyParser.json());
 app.use(logger);

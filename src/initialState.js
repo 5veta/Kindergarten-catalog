@@ -1,7 +1,7 @@
 import {selectallcountries, selectallregions, selectallregsdistricts, selectalllocations, selectalltowndistricts, selectallstreets} from './db/addresses';
 import {selectallkgardens} from './db/kindergartens';
 
-const initialState=async()=>{
+const getinitialState=async()=>{
     let initialState={
         files: {},
         kgardens: await selectallkgardens().catch(error => console.error(`Kgardens: ${error}`)),
@@ -432,4 +432,4 @@ const initialState=async()=>{
     return initialState;
 };
 
-export default initialState;
+export default getinitialState;
