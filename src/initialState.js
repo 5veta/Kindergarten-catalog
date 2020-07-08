@@ -1,7 +1,7 @@
 import {selectallcountries, selectallregions, selectallregsdistricts, selectalllocations, selectalltowndistricts, selectallstreets} from './db/addresses';
 import {selectallkgardens} from './db/kindergartens';
 
-export const initialState={
+const initialState={
     files: {},
     kgardens: [],
     countries:[],
