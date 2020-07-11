@@ -1,12 +1,21 @@
 import PropTypes from 'prop-types';
-import {CountrySel, RegionSel} from '../containers.js';
 import Kgardens from './Kgardens';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {withRouter} from 'react-router';
-import HeaderPicture from './HeaderPicture';
 import classNames from "classnames";
 import {Articles} from "./Articles";
 
+const SelectField=({changefun, header, array, matchid, id})=>{
+    return (
+        <select  onChange={changefun}  className={classHandler(match[matchid])} >
+            <option>{header}</option>
+                {array.map(val=>
+                    <option  selected={String(val[id])===match[matchid]?true:false} key={val[id]} value={val[id]} >{val.name}</option>
+                )}
+        </select>
+    );
+    
+};
 
 const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f=>f, changeloc=f=>f, match, lang, classHandler=f=>f})=>{
     
@@ -15,20 +24,10 @@ const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f
         <form>
             <div className="form-row my-2 ">
                 <div className="col-12 col-sm-12 col-md mb-2">
-                    <select  onChange={changec}  className={classHandler(match.cids)} >
-                        <option>{lang.country}</option>
-                        {countries.map((val, i)=>
-                            <option  selected={String(val.cid)===match.cids?true:false} key={val.cid} value={val.cid} >{val.name}</option>
-                        )}
-                    </select>
+                    <SelectField changefun={changec} matchid='cids' header={lang.country} array={countries} id='cid' />
                 </div>
                 <div className="col-12 col-sm-12 col-md mb-2">
-                    <select onChange={changereg}  className={classHandler(match.regids)} >
-                        <option >{lang.region}</option>
-                        {   regions.map((val, i)=>
-                            <option selected={(String(val.rid)===match.regids)?true:false} key={val.rid} value={val.rid} >{val.name}</option>
-                        )}
-                    </select>
+                    <SelectField changefun={changereg} matchid='regids' header={lang.region} array={regions} id='rid' />
                 </div>
                 
                 <div className="col-12 col-sm-12 col-md mb-2">
@@ -86,16 +85,13 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  history, match, kgardens=[
             .filter(option => option.selected)
             .map(option =>option.value);
             history.push(`/sel/${arrc.join("-")}`);
-            //onSeltofind({type: "sel_countries", target_value: arrc});
+            
         }
         else{
             history.push(`/`);
-            //onSeltofind({type: "sel_countries", target_value: []});
         }
     };
     
-    let couns=countries.map(v=>v.cid).join("-");
-    let regs=regions.map(v=>v.rid).join("-");
     
     const changereg=(event)=>{
         let regionsl=event.target;
