@@ -104,8 +104,8 @@ KgDescription.propTypes={
 const Kgarden=({kgarden, lang})=>{
     
     return(
-    <div className="d-flex " >
-        <div className=" flex-fill card mb-3 textnavy" style={{borderColor: "#3b5f82"}}>
+    
+        <div className="col-12 card mb-3 bordercolor">
             <div className="card-header  bg-light border-light">
                 <div className="card-group m-0">
                     <KgContacts site={kgarden.site} phonenumber={kgarden.phonen} address={kgarden.address} lang={lang.address} />
@@ -115,12 +115,12 @@ const Kgarden=({kgarden, lang})=>{
             <div className="card-body">
                 <KgDescription name={kgarden.name} description={kgarden.descr} />
                 <hr className="my-4"/>
-                <KgPrice {...kgarden.price} lang={lang.price}/>
+                <KgPrice {...kgarden.price} lang={lang.price}/> 
                 <hr className="my-4"/>
                 <KgLessons lessons={kgarden.lessons} lang={lang.lessons} />
             </div>
         </div>
-    </div>
+  
     );
 };
 

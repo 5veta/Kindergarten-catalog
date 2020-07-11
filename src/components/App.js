@@ -10,7 +10,7 @@ const App =()=>
         <Switch>
                 <Route exact path="/moder" component={LoginAF}/>        
                 <Route path="/" component={()=>(
-                        <div className="vh-100">
+                        
                         <MenuC />
                         <Switch>
                                 <Route exact path="/" component={HomePage}/>
@@ -26,7 +26,6 @@ const App =()=>
                                 <Route path="/admin" component={AdmAccaunt}/>
                         </Switch>
                         <FooterC />
-                        </div>
                 )}/>
         </Switch>
 export default App;
