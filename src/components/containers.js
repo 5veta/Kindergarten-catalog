@@ -35,7 +35,7 @@ export const FormtoSel=connect(
             countries: state.countries,
             regions: filterRegions(state, props.match.cids),
             rdiloc: filterLocation(state, props.match.regids),
-            lang: getTranslation(state, 'selkg').form,
+            lang: props.lang,
             history: props.history,
             match: props.match
         })

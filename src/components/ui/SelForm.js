@@ -121,7 +121,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[], lang, history, match})=>{
     };
     
     return(
-        <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang} classHandler={classHandler}/>
+        <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match} lang={lang} classHandler={classHandler}/>
     );
 };
 
