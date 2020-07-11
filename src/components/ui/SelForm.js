@@ -5,9 +5,9 @@ import {withRouter} from 'react-router';
 import classNames from "classnames";
 import {Articles} from "./Articles";
 
-const SelectField=({changefun, header, array, matchid, id})=>{
+const SelectField=({changefun, header, array, matchid, id, className})=>{
     return (
-        <select  onChange={changefun}  className={classHandler(match[matchid])} >
+        <select  onChange={changefun}  className={className} >
             <option>{header}</option>
                 {array.map(val=>
                     <option  selected={String(val[id])===match[matchid]?true:false} key={val[id]} value={val[id]} >{val.name}</option>
@@ -24,10 +24,10 @@ const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f
         <form>
             <div className="form-row my-2 ">
                 <div className="col-12 col-sm-12 col-md mb-2">
-                    <SelectField changefun={changec} matchid='cids' header={lang.country} array={countries} id='cid' />
+                    <SelectField changefun={changec} matchid='cids' header={lang.country} array={countries} id='cid' className={classHandler(match.cids)}/>
                 </div>
                 <div className="col-12 col-sm-12 col-md mb-2">
-                    <SelectField changefun={changereg} matchid='regids' header={lang.region} array={regions} id='rid' />
+                    <SelectField changefun={changereg} matchid='regids' header={lang.region} array={regions} id='rid'className={classHandler(match.regids)}/>
                 </div>
                 
                 <div className="col-12 col-sm-12 col-md mb-2">
@@ -62,12 +62,13 @@ KgSelForm.propTypes={
     rdiloc: PropTypes.array,
     changec: PropTypes.func,
     changereg: PropTypes.func,
-    changeloc: PropTypes.func
+    changeloc: PropTypes.func,
+    classHandler: PropTypes.func
 };
 
 
 const SelForm=({countries=[], regions=[], rdiloc=[],  history, match, kgardens=[], lang})=>{
-   
+    
     const classHandler=(matchv)=>{
         let cn=classNames({
         "custom-select selform-selected": matchv !== undefined,
@@ -76,7 +77,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  history, match, kgardens=[
     
         return cn;
     };
-        
+
     const changec=(event)=>{
         let countriesl=event.target;
         let reg=new RegExp(`${lang.form.country}\\s*\\w*`);
