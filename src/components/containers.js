@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import Home from './ui/Home';
 import Countries from './ui/Countries';
 import SelForm from './ui/SelForm';
 import Kgardens from './ui/Kgardens';
