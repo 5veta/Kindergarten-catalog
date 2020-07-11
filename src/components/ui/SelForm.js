@@ -70,7 +70,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[], lang, history, match})=>{
 
     const changec=(event)=>{
         let countriesl=event.target;
-        let reg=new RegExp(`${lang.form.country}\\s*\\w*`);
+        let reg=new RegExp(`${lang.country}\\s*\\w*`);
         if(!reg.test(countriesl.value)){
             let arrc=Array.from(countriesl.options)
             .filter(option => option.selected)
@@ -86,7 +86,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[], lang, history, match})=>{
     
     const changereg=(event)=>{
         let regionsl=event.target;
-        let reg=new RegExp(`${lang.form.region}\\s*\\w*`);
+        let reg=new RegExp(`${lang.region}\\s*\\w*`);
         if(!reg.test(regionsl.value)){
            let arregions=Array.from(regionsl.options)
             .filter(option => option.selected)
@@ -106,7 +106,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[], lang, history, match})=>{
     const changeloc=(event)=>{
         
         let locl=event.target;
-        let reg=new RegExp(`${lang.form.location}\\s*\\w*`);
+        let reg=new RegExp(`${lang.location}\\s*\\w*`);
         if(!reg.test(locl.value)){
            let arrloc=Array.from(locl.options)
             .filter(option => option.selected)
