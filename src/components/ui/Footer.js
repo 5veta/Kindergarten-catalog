@@ -13,7 +13,7 @@ const Footer=({lang, isLogin})=>{
                 {   
                     (isLogin)?
                         <LogoutF/>:
-                        <Button text={lang.login.text} link={lang.login.link} />
+                        <a href={lang.login.link}><button className="btn btn-light textnavy">{lang.login.text}</button></a>
                 }
                 </div>    
                 
