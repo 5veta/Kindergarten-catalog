@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
 const KgContacts=({site, phonenumber, address, lang})=>{
-    //console.log("phonenumber"+JSON.stringify(phonenumber));
-   // console.log("address"+JSON.stringify(address));
+   
     return(
         <div className="card border-0 bg-light">
             <div className="card-body ">            
@@ -25,8 +24,7 @@ KgContacts.propTypes={
 };
 
 const KgTimeAge=({time, age, lang})=>{
-    //console.log("phonenumber"+JSON.stringify(phonenumber));
-   // console.log("address"+JSON.stringify(address));
+   
     return(
         <div className="card border-0 bg-light">
             <div className="card-body">
@@ -43,8 +41,7 @@ KgTimeAge.propTypes={
 };
 
 const KgPrice=({halfday, day, month, year, annual, lang})=>{
-    //console.log("phonenumber"+JSON.stringify(phonenumber));
-   // console.log("address"+JSON.stringify(address));
+    
     return(
         <div>
             <h5 className="card-title" style={{color: "#3b5f82"}}>{lang.header}</h5>
@@ -67,8 +64,7 @@ KgPrice.propTypes={
 };
 
 const KgLessons=({lessons, lang})=>{
-    //console.log("phonenumber"+JSON.stringify(phonenumber));
-   // console.log("address"+JSON.stringify(address));
+    
     return(
         <div>
             {Array.isArray(lessons)?
@@ -90,8 +86,7 @@ KgLessons.propTypes={
 };
 
 const KgDescription=({name, description})=>{
-    //console.log("phonenumber"+JSON.stringify(phonenumber));
-   // console.log("address"+JSON.stringify(address));
+    
     return(
         <div>
             <h5 className="card-title" style={{color: "#3b5f82"}}>{name}</h5>
@@ -109,8 +104,8 @@ KgDescription.propTypes={
 const Kgarden=({kgarden, lang})=>{
     
     return(
-    
-        <div className="card mb-3" style={{borderColor: "#3b5f82"}}>
+    <div className="row">
+        <div className=" col-8 card mb-3" style={{borderColor: "#3b5f82"}}>
             <div className="card-header  bg-light border-light">
                 <div className="card-group m-0">
                     <KgContacts site={kgarden.site} phonenumber={kgarden.phonen} address={kgarden.address} lang={lang.address} />
@@ -125,7 +120,7 @@ const Kgarden=({kgarden, lang})=>{
                 <KgLessons lessons={kgarden.lessons} lang={lang.lessons} />
             </div>
         </div>
- 
+    </div>
     );
 };
 
