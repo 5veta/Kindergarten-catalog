@@ -14,7 +14,9 @@ const App =()=>
                         <MenuC />
                         <Switch>
                                 <Route exact path="/" component={FormtoSel}/>
-                                <Route path="/sel" component={FormtoSel}/>
+                                <Route exact path="/sel/:cids" component={FormtoSel}/>
+                                <Route exact path="/sel/:cids/:regids" component={FormtoSel}/>
+                                <Route exact path="/sel/:cids/:regids/:locids" component={FormtoSel}/>
                                 <Route exact path="/kgardens/:id" component={KgardenDetails} />
                                 <Route path="/login" component={LoginF}/>
                                 <Route path="/createaccount" component={CreateAccountF}/>
