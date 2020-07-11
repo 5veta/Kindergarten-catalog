@@ -16,7 +16,7 @@ const Home=({match, history, lang})=>{
                 </div>
                 <div className="d-block d-sm-block d-md-none d-flex justify-content-md-center mb-0 mb-sm-0 my-md-4 ml-2 ml-md-0">
                     <div className="w-75 text-center p-md-2" >
-                        <FormHeader text={lang.text} />
+                        <FormHeader header={lang.text} />
                     </div>
                 </div>
                 <div className="d-flex justify-content-md-center ml-2 ml-md-0">

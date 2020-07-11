@@ -97,7 +97,6 @@ export const filterLocation=(state, pregions)=>{
 export const getTranslation=(state, cpart)=>{
     let lang=state.translator.locale;
     let translate=state.translator[lang][cpart];
-    console.log('translate: '+JSON.stringify(translate));
     return translate;
 };
 
