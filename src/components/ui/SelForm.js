@@ -58,7 +58,7 @@ KgSelForm.propTypes={
 
 
 const SelForm=({countries=[], regions=[], rdiloc=[], lang, history, match})=>{
-    
+    console.log(lang, match)
     const classHandler=(matchv)=>{
         let cn=classNames({
         "custom-select selform-selected": matchv !== undefined,
@@ -121,7 +121,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[], lang, history, match})=>{
     };
     
     return(
-        <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang.form} classHandler={classHandler}/>
+        <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang} classHandler={classHandler}/>
     );
 };
 

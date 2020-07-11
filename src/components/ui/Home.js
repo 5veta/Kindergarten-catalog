@@ -5,7 +5,7 @@ import {FormtoSel, KGList} from "../containers";
 import FormHeader from './FormHeader';
 
 const Home=({match, history, lang})=>{
-    console.log(lang, match)
+    
     return(
         <div className="min-vh-100 d-flex bg-light pt-md-5 m-0 align-items-start" >
             <div className="flex-fill d-flex flex-column justify-content-md-center ">
