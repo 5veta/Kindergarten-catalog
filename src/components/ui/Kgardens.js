@@ -2,13 +2,12 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import {Link} from 'react-router-dom';
 
-const Kgardens=({kgardens=[], history, lang})=>{
+const Kgardens=({kgardens=[], lang})=>{
     
-    let ex=['png', 'svg', 'jpg'];
     return(
         <div class="table-responsive table-responsive-sm">
-            <table className="table table-hover">
-                
+            {(kgardens.length>0)?
+            <table className="table table-hover"> 
                 <tbody>
         
                     {
@@ -52,7 +51,8 @@ const Kgardens=({kgardens=[], history, lang})=>{
                    
     
                 </tbody>
-            </table>
+            </table>:
+            <div></div>}
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { AddKgardens, FormtoSel, KgardenDetails, LoginF, CreateAccountF, MenuC, LoginAF, UserAccaunt, AdmAccaunt, ForgotPass, PasswordRecovery, FooterC} from './containers.js';
+import { HomePage, FormtoSel, KgardenDetails, LoginF, CreateAccountF, MenuC, LoginAF, UserAccaunt, AdmAccaunt, ForgotPass, PasswordRecovery, FooterC} from './containers.js';
 import '../../App.css'; 
 
 
@@ -13,10 +13,10 @@ const App =()=>
                         <div className="vh-100">
                         <MenuC />
                         <Switch>
-                                <Route exact path="/" component={FormtoSel}/>
-                                <Route exact path="/sel/:cids" component={FormtoSel}/>
-                                <Route exact path="/sel/:cids/:regids" component={FormtoSel}/>
-                                <Route exact path="/sel/:cids/:regids/:locids" component={FormtoSel}/>
+                                <Route exact path="/" component={HomePage}/>
+                                <Route exact path="/sel/:cids" component={HomePage}/>
+                                <Route exact path="/sel/:cids/:regids" component={HomePage}/>
+                                <Route exact path="/sel/:cids/:regids/:locids" component={HomePage}/>
                                 <Route exact path="/kgardens/:id" component={KgardenDetails} />
                                 <Route path="/login" component={LoginF}/>
                                 <Route path="/createaccount" component={CreateAccountF}/>

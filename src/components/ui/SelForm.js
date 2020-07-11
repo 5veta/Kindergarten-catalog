@@ -1,9 +1,5 @@
 import PropTypes from 'prop-types';
-import Kgardens from './Kgardens';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import {withRouter} from 'react-router';
 import classNames from "classnames";
-import {Articles} from "./Articles";
 
 const SelectField=({changefun, header, array, matchid, id, match, className})=>{
     return (
@@ -33,19 +29,13 @@ const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f
                 <div className="col-12 col-sm-12 col-md mb-2">
                     <select  onChange={changeloc} className={classHandler(match.locids)} >
                         <option >{lang.location}</option>
-                        { rdiloc.map((v, i)=>
-                                <optgroup key={v.regdist.rdid} data-id={JSON.stringify({regd: v.regdist.rdid})} label={v.regdist.name}  >
-                                
-                                    {
-                                        v.locations.map((vl,y)=>
-                                            <option selected={(String(vl.lid)===match.locids)?true:false} key={vl.lid} value={vl.lid} >{vl.name}</option>
-                                        )
-                                    }
-                                
-                                </optgroup>
-                                
-                            )
-                        }
+                        {rdiloc.map((v, i)=>
+                            <optgroup key={v.regdist.rdid} data-id={JSON.stringify({regd: v.regdist.rdid})} label={v.regdist.name} >    
+                                {v.locations.map((vl,y)=>
+                                    <option selected={(String(vl.lid)===match.locids)?true:false} key={vl.lid} value={vl.lid} >{vl.name}</option>
+                                )}
+                            </optgroup>
+                        )}
                     </select>
                 </div>
                 
@@ -67,7 +57,7 @@ KgSelForm.propTypes={
 };
 
 
-const SelForm=({countries=[], regions=[], rdiloc=[],  history, match, kgardens=[], lang})=>{
+const SelForm=({countries=[], regions=[], rdiloc=[], lang, history, match})=>{
     
     const classHandler=(matchv)=>{
         let cn=classNames({
@@ -131,32 +121,7 @@ const SelForm=({countries=[], regions=[], rdiloc=[],  history, match, kgardens=[
     };
     
     return(
-        <div className="min-vh-100 d-flex bg-light pt-md-5 m-0 align-items-start" >
-        <div className="flex-fill d-flex flex-column justify-content-md-center ">
-            <div className="d-flex justify-content-md-center my-0 my-sm-0 my-md-4 mt-md-2 ml-2 ml-md-0">
-                <div className="w-75" >
-                    <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang.form} classHandler={classHandler}/>
-                </div>
-            </div>
-            <div className="d-block d-sm-block d-md-none d-flex justify-content-md-center mb-0 mb-sm-0 my-md-4 ml-2 ml-md-0">
-                <div className="w-75 text-center p-md-2" >
-                    <h5 className="textnavy">{lang.text}</h5>
-                </div>
-            </div>
-            <div className="d-flex justify-content-md-center ml-2 ml-md-0">
-            {(rdiloc.length>0)?
-                <div className="w-75">
-                    <Kgardens kgardens={kgardens} lang={lang.kgs} />
-                </div>:<div></div>
-            }    
-            </div>
-            <div className="d-flex justify-content-md-center my-0 my-sm-0 my-md-5 py-md-3 ml-2 ml-md-0">
-                <div className="w-75" >
-                    <Articles />
-                </div>
-            </div>
-        </div>
-        </div>
+        <KgSelForm countries={countries} regions={regions} rdiloc={rdiloc} changec={changec} changereg={changereg} changeloc={changeloc} match={match.params} lang={lang.form} classHandler={classHandler}/>
     );
 };
 
@@ -168,4 +133,4 @@ SelForm.propTypes={
     lang: PropTypes.object
 };
 
-export default withRouter(SelForm);
+export default SelForm;

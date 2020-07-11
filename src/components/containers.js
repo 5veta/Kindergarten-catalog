@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import Countries from './ui/Countries';
-import Regions from './ui/Regions';
 import SelForm from './ui/SelForm';
 import Kgardens from './ui/Kgardens';
 import AddingF from './ui/AddingF';
@@ -20,8 +18,36 @@ import {Accaunt, AdminAccaunt} from './ui/Accaunt';
 import DropdownLang from './ui/DropdownLang';
 import UserProfile from './ui/UserProfile';
 import Footer from './ui/Footer';
-import {getCountry, getKgardens, getSelval, addKgarden, getSeltofined, checkUser, checkAUser, addUser, logoutUser, logoutAUser, countLessons, changeLocale, getListNewKg, moderateNewKg, addFileData, forgotPassword, recoveryPassword, checkLink, changePass, deleteKg} from '../actions';
+import {getCountry, getSelval, addKgarden, checkUser, checkAUser, addUser, logoutUser, logoutAUser, countLessons, changeLocale, getListNewKg, moderateNewKg, forgotPassword, recoveryPassword, checkLink, changePass, deleteKg} from '../actions';
 import {kgardensList, oneKgarden, filterRegions, filterLocation, getTranslation} from '../lib/utils.js';
+
+export const HomePage=connect(
+    (state) =>
+        ({
+            lang: getTranslation(state, 'selkg')
+        })
+)(Home);
+
+export const FormtoSel=connect(
+    (state, props) =>
+        ({
+            countries: state.countries,
+            regions: filterRegions(state, props.match.cids),
+            rdiloc: filterLocation(state, props.match.regids),
+            lang=props.lang,
+            history=props.history,
+            match=props.match
+        })
+)(SelForm);
+
+export const KGList=connect(
+    (state, props) =>
+        ({
+            kgardens: kgardensList(state, props.match.regids, props.match.locids),
+            lang: props.lang,
+            match: props.match
+        })
+)(Kgardens)
 
 export const FooterC=connect(
     state=>({
@@ -242,19 +268,6 @@ export const CountrySel = connect(
         }
     })
 )(Countries);
-
-
-
-export const FormtoSel=connect(
-    (state, props) =>
-        ({
-            countries: state.countries,
-            regions: filterRegions(state, props.match.params.cids),
-            rdiloc: filterLocation(state, props.match.params.regids),
-            kgardens: kgardensList(state, props.match.params.regids, props.match.params.locids),
-            lang: getTranslation(state, 'selkg')
-        })
-)(SelForm);
 
 export const KgardenDetails=connect(
     (state, props)=>({
