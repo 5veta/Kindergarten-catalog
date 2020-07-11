@@ -4,6 +4,7 @@ import { SubmissionError } from 'redux-form';
 import {required, muxlengthCreator, minlengthCreator, emailvalid} from '../../lib/validators';
 import {renderField} from '../formsParts';
 import {Redirect} from 'react-router-dom';
+import FormHeader from './FormHeader';
 
 const muxlength30=muxlengthCreator(30);
 const minlength8=minlengthCreator(8);
@@ -62,7 +63,7 @@ const Login=({islogin, login, onCheckUser=f=>f, lang})=>{
         <Redirect to="/admin" />:(islogin)?<Redirect to="/accaunt" />:
         <div className="p-2 col-12 col-sm-12 col-md-5 d-flex flex-column justify-content-center">
           
-            <div className="flex-fill"><h5 className="textnavy">{lang.header}</h5></div>
+            <div className="flex-fill"><FormHeader header={lang.header} /></div>
             <div className="flex-fill"><LoginReduxForm onSubmit={onSubmit} lang={lang} /></div>
           
         </div>

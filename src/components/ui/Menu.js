@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import {LogoutF, LangMenu} from '../containers';
-import Button from './Button';
 
 const Menu=({isLogin, login, lang})=>{
     
@@ -32,7 +31,7 @@ const Menu=({isLogin, login, lang})=>{
                       <a className="nav-link text-reset" href="/admin">{lang.enter}</a>:
                       isLogin?
                         <a className="text-reset nav-link" href="/accaunt">{lang.enter}</a>:
-                        <Button text={lang.login.text} link={lang.login.link} />
+                        <a className="text-reset" href={lang.login.link}><button className="btn btn-light textnavy" >{lang.login.text}</button></a>
                   }
                   </li>
                   <li className="nav-item">
