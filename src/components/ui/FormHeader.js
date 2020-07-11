@@ -1,10 +1,9 @@
-import { Form } from "redux-form";
 
 import PropTypes from 'prop-types';
 
 const FormHeader=header=>{
 
-    return <h5 className="textnavy">{header}</h5>;
+    return( <h5 className="textnavy">{header}</h5>);
 };
 
 FormHeader.propTypes={

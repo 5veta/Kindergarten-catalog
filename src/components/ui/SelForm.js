@@ -58,7 +58,7 @@ KgSelForm.propTypes={
 
 
 const SelForm=({countries=[], regions=[], rdiloc=[], lang, history, match})=>{
-    console.log(lang, match)
+    console.log(match);
     const classHandler=(matchv)=>{
         let cn=classNames({
         "custom-select selform-selected": matchv !== undefined,
@@ -92,11 +92,11 @@ const SelForm=({countries=[], regions=[], rdiloc=[], lang, history, match})=>{
             .filter(option => option.selected)
             .map(option => option.value);
             
-            history.push(`/sel/${match.params.cids}/${arregions.join("-")}`);
+            history.push(`/sel/${match.cids}/${arregions.join("-")}`);
            
         }
         else{
-            history.push(`/sel/${match.params.cids}`);
+            history.push(`/sel/${match.cids}`);
            
         }
         
@@ -111,11 +111,11 @@ const SelForm=({countries=[], regions=[], rdiloc=[], lang, history, match})=>{
            let arrloc=Array.from(locl.options)
             .filter(option => option.selected)
             .map(option => option.value);
-            history.push(`/sel/${match.params.cids}/${match.params.regids}/${arrloc.join("-")}`);
+            history.push(`/sel/${match.cids}/${match.regids}/${arrloc.join("-")}`);
            
         }
         else{
-            history.push(`/sel/${match.params.cids}/${match.params.regids}`);
+            history.push(`/sel/${match.cids}/${match.regids}`);
            
         }
     };
