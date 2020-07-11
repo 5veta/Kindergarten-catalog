@@ -1,7 +1,7 @@
 
 import PropTypes from 'prop-types';
 
-const FormHeader=header=>{
+const FormHeader=({header})=>{
 
     return( <h5 className="textnavy">{header}</h5>);
 };
