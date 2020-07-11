@@ -5,7 +5,7 @@ import {withRouter} from 'react-router';
 import classNames from "classnames";
 import {Articles} from "./Articles";
 
-const SelectField=({changefun, header, array, matchid, id, className})=>{
+const SelectField=({changefun, header, array, matchid, id, match, className})=>{
     return (
         <select  onChange={changefun}  className={className} >
             <option>{header}</option>
@@ -24,10 +24,10 @@ const KgSelForm=({countries=[], regions=[], rdiloc=[], changec=f=>f, changereg=f
         <form>
             <div className="form-row my-2 ">
                 <div className="col-12 col-sm-12 col-md mb-2">
-                    <SelectField changefun={changec} matchid='cids' header={lang.country} array={countries} id='cid' className={classHandler(match.cids)}/>
+                    <SelectField changefun={changec} matchid='cids' header={lang.country} array={countries} id='cid' match={match} className={classHandler(match.cids)}/>
                 </div>
                 <div className="col-12 col-sm-12 col-md mb-2">
-                    <SelectField changefun={changereg} matchid='regids' header={lang.region} array={regions} id='rid'className={classHandler(match.regids)}/>
+                    <SelectField changefun={changereg} matchid='regids' header={lang.region} array={regions} id='rid'match={match} className={classHandler(match.regids)}/>
                 </div>
                 
                 <div className="col-12 col-sm-12 col-md mb-2">
