@@ -8,9 +8,9 @@ const KgContacts=({site, phonenumber, address, lang})=>{
             <div className="card-body ">            
                 <a href={site} className="card-link text-blac"><small>{site}</small></a>
                 {phonenumber.map((v, i)=>
-                   <div className="card-text" key={i}><small style={{color: "#3b5f82"}}>{v}</small></div>
+                   <div className="card-text" key={i}><small className="textnavy">{v}</small></div>
                 )}
-                <p className="card-text" style={{color: "#3b5f82"}}><small >{address.country}, {address.location}, {address.strname}, {address.house}</small>{(address.appt)?<small>, {lang.appt}{address.appt},</small>:<small></small>}{(address.floor)?<small>{lang.floor}{address.floor}</small>:<small></small>}</p>
+                <p className="card-text textnavy" ><small >{address.country}, {address.location}, {address.strname}, {address.house}</small>{(address.appt)?<small>, {lang.appt}{address.appt},</small>:<small></small>}{(address.floor)?<small>{lang.floor}{address.floor}</small>:<small></small>}</p>
             </div>
         </div>
     );
@@ -28,8 +28,8 @@ const KgTimeAge=({time, age, lang})=>{
     return(
         <div className="card border-0 bg-light">
             <div className="card-body">
-                <div className="card-text"><small style={{color: "#3b5f82"}}>{lang.time} {time.from} - {time.to}</small></div>
-                <div className="card-text"><small style={{color: "#3b5f82"}}>{lang.age}{age.from} - {age.to} {lang.yearsold}</small></div>
+                <div className="card-text textnavy"><small >{lang.time} {time.from} - {time.to}</small></div>
+                <div className="card-text textnavy"><small >{lang.age}{age.from} - {age.to} {lang.yearsold}</small></div>
             </div>
         </div>
     );
@@ -44,7 +44,7 @@ const KgPrice=({halfday, day, month, year, annual, lang})=>{
     
     return(
         <div>
-            <h5 className="card-title" style={{color: "#3b5f82"}}>{lang.header}</h5>
+            <h5 className="card-title textnavy" >{lang.header}</h5>
             
             {(halfday)?<p className="card-text">{halfday} {lang.perhday}</p>:<p></p>}
             {(day)?<p className="card-text">{day} {lang.perday}</p>:<p></p>}
@@ -69,7 +69,7 @@ const KgLessons=({lessons, lang})=>{
         <div>
             {Array.isArray(lessons)?
                 <div>
-                    <h5 className="card-title" style={{color: "#3b5f82"}}>{lang.header}</h5>
+                    <h5 className="card-title textnavy" >{lang.header}</h5>
                     {lessons.map((v, i)=>
                         <p className="card-text" key={i}><b>-{v.lname}: </b><span>{v.ldesc}</span></p>
                     )}
@@ -89,7 +89,7 @@ const KgDescription=({name, description})=>{
     
     return(
         <div>
-            <h5 className="card-title" style={{color: "#3b5f82"}}>{name}</h5>
+            <h5 className="card-title textnavy" >{name}</h5>
             <p className="card-text">{description}</p>
         </div>
     );
@@ -105,7 +105,7 @@ const Kgarden=({kgarden, lang})=>{
     
     return(
     <div className="d-flex " >
-        <div className=" flex-fill card mb-3" style={{borderColor: "#3b5f82"}}>
+        <div className=" flex-fill card mb-3 textnavy" style={{borderColor: "#3b5f82"}}>
             <div className="card-header  bg-light border-light">
                 <div className="card-group m-0">
                     <KgContacts site={kgarden.site} phonenumber={kgarden.phonen} address={kgarden.address} lang={lang.address} />
