@@ -32,7 +32,7 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             },
-            {
+            /*{
                 test: /\.scss/,
                 loader: ExtractTextPlugin.extract({
                     fallback: "style-loader",
@@ -42,7 +42,15 @@ module.exports = {
                           plugins: () => [require('precss'), require("autoprefixer")]
                         }}, "sass-loader"]
                 })
-            },
+            },*/
+            {    
+                test: /\.scss$/,     
+                use: [
+                  'style-loader', // creates style nodes from JS strings      
+                  'css-loader', // translates CSS into CommonJS
+                  'sass-loader' // compiles Sass to CSS, using Node Sass by default
+                ],
+              },
             {
                 test: /\.(jpg|png|svg)$/,
                 //include: path.resolve(__dirname, "src/images"),
