@@ -7,7 +7,7 @@ import storeFactory from '../store';
 import fs from 'fs';
 import path from 'path';
 const staticCSS = fs.readFileSync(path.join(__dirname, '../../node_modules/bootstrap/dist/css/bootstrap.min.css'));
-const mystaticCSS = fs.readFileSync(path.join(__dirname, '../../App.css'));
+//const mystaticCSS = fs.readFileSync(path.join(__dirname, '../../App.css'));
 const staticJQ=fs.readFileSync(path.join(__dirname, '../../node_modules/jquery/dist/jquery.min.js'));
 const staticJS = fs.readFileSync(path.join(__dirname, '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'));
 
