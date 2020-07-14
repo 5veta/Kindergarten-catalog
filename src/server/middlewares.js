@@ -30,7 +30,7 @@ const buildHTMLPage = ({html, state}) => `
         <meta charset="utf-8">
         <title>Kids Gardens</title>
         <style>${staticCSS}</style>
-        <style>${mystaticCSS}</style>
+        
         
     </head>
     <body>
