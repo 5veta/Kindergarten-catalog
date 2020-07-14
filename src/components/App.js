@@ -1,6 +1,6 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { HomePage, FormtoSel, KgardenDetails, LoginF, CreateAccountF, MenuC, LoginAF, UserAccaunt, AdmAccaunt, ForgotPass, PasswordRecovery, FooterC} from './containers.js';
-import '../../App.css'; 
+import '../../scss/custom.scss'; 
 
 
 
