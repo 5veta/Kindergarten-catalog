@@ -1,0 +1,62 @@
+a {
+  text-decoration: none;
+  color: #3b5f82;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.childrenimg {
+  height: 300px;
+}
+
+.childrenimg-small {
+  height: 80px;
+}
+
+.selform {
+  border-color: #3b5f82;
+  color: #3b5f82;
+}
+
+.bgstyle {
+  background: #3b5f82;
+  color: white;
+}
+
+.selform-selected {
+  background: #3b5f82;
+  color: white;
+}
+
+.mbuttons {
+  background: #3b5f82;
+  color: white;
+}
+
+.textnavy {
+  color: #3b5f82;
+}
+
+.tddesc {
+  height: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-img {
+  width: 50px;
+  height: 50px;
+}
+
+.kgimgsize {
+  width: 200px;
+}
+
+.headertext {
+  color: #3b5f82;
+  font-family: Serif;
+}
+
+/*# sourceMappingURL=App.css.map */
