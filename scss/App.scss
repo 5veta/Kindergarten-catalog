@@ -21,21 +21,21 @@ a:hover { text-decoration: underline; }
     color: $primary-color;
 }
 
-@mixin bgmixin($bg, $color) {
-    background: $bg;
-    color: $color;
+%bg-style {
+    background: $primary-color;
+    color: $white-text;
 }
 
 .bgstyle{
-    @include bgmixin($primary-color, $white-text);
+    @extend %bg-style;
 }
 
 .selform-selected{
-    @include bgmixin($primary-color, $white-text);
+    @extend %bg-style;
 }
 
 .mbuttons{
-    @include bgmixin($primary-color, $white-text);
+    @extend %bg-style;
 }
 
 .textnavy{
