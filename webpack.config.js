@@ -25,7 +25,7 @@ module.exports = {
                 exclude: /(node_modules)/,
                 loader: "babel-loader",
                 query: {
-                    presets: ["@babel/env", "stage-0", "@babel/react"]
+                    presets: ["@babel/env", "env", "stage-0", "@babel/react", "react"]
                 }
             },
             {
