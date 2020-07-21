@@ -1,5 +1,6 @@
 import C from '../../../src/constants';
 import {kgarden} from '../../../src/store/reducers';
+import deepFreeze from 'deep-freeze';
 
 describe("kindergarten reducer", ()=>{
     it("ADD_KGARDEN success", ()=>{
@@ -21,6 +22,8 @@ describe("kindergarten reducer", ()=>{
                 lname: "Розвиток мови"}]
             }
         };
+        deepFreeze(state);
+        deepFreeze(action);
         const results=kgarden(state, action);
         expect(results)
         .toEqual({
