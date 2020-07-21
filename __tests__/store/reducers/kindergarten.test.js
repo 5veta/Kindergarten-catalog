@@ -8,7 +8,7 @@ describe("kindergarten reducer", ()=>{
         const action={
             type: C.ADD_KGARDEN, 
             kgarden:{
-                kgid: 60,
+                kgid: 0,
                 img: "som.jpg", 
                 name: "Name", 
                 descr: "some description", 
