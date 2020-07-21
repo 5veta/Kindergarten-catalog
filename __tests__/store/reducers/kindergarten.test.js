@@ -1,5 +1,5 @@
-import C from './src/constants';
-import {kgarden} from './src/store/reducers';
+import C from '../../../src/constants';
+import {kgarden} from '../../../src/store/reducers';
 
 describe("kindergarten reducer", ()=>{
     it("ADD_KGARDEN success", ()=>{
