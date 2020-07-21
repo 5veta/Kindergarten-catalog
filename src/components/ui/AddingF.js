@@ -184,7 +184,7 @@ const AddingF=({formpicture, countries=[], regions=[], regdistrs=[], locations=[
       
       onNewKgarden(formData);
       props.reset();
-      onCountLessons({type: "added_kgarden", target_value: false});
+      //onCountLessons({type: "added_kgarden", target_value: false});
      
   };
    
@@ -223,11 +223,6 @@ const AddingF=({formpicture, countries=[], regions=[], regdistrs=[], locations=[
     onSelectval({type: "sel_towndts", target_value: newValue});
   };
     
-  const newLessons=(event)=>{
-    event.preventDefault();
-    event.stopPropagation();  
-    onCountLessons({type: "count_lessons", target_value:1});      
-  };
   
   return(
     <div>
@@ -236,7 +231,7 @@ const AddingF=({formpicture, countries=[], regions=[], regdistrs=[], locations=[
       <div className="">
         <div>
           <h5>{lang.header}</h5>
-          <AddReduxForm onSubmit={submit} lang={lang} currency={currency} countries={countries} regions={regions} regdistrs={regdistrs} locations={locations} towndist={towndist} streets={streets} changecountry={changecountry}  changereg={changereg} changeregdts={changeregdts} changeloc={changeloc} changetowndts={changetowndts} changestreet={changestreet} lessons={lessons} newLessons={newLessons} locid={locid} streetid={streetid} />
+          <AddReduxForm onSubmit={submit} lang={lang} currency={currency} countries={countries} regions={regions} regdistrs={regdistrs} locations={locations} towndist={towndist} streets={streets} changecountry={changecountry}  changereg={changereg} changeregdts={changeregdts} changeloc={changeloc} changetowndts={changetowndts} changestreet={changestreet} lessons={lessons} locid={locid} streetid={streetid} />
         </div>
       </div>:
       <Redirect to="/" />
