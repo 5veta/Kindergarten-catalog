@@ -242,7 +242,7 @@ export const kgardens=(state=[], action={type: null})=>{
         case C.GET_KGARDENS:
         return action.kgardens;
         case C.ADD_KGARDEN:
-            return state.concat(action.kgarden);
+            return state.concat(kgarden({}, action));
         default:
             return state;
     }
@@ -250,7 +250,12 @@ export const kgardens=(state=[], action={type: null})=>{
 
 export const kgarden=(state={}, action={type: null})=>{
     
+    switch (action.type){
+        case C.ADD_KGARDEN:
+            return action.kgarden;
+        default:
             return state;
+    }
     
 };
 
