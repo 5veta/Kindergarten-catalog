@@ -27,7 +27,7 @@ describe("kindergarten reducer", ()=>{
         const results=kgarden(state, action);
         expect(results)
         .toEqual({
-                kgid: 60,
+                kgid: 0,
                 img: "som.jpg", 
                 name: "Name", 
                 descr: "some description", 
