@@ -8,5 +8,5 @@ node_modules
 *~
 .env
 dbf.js
-*.json
+src/*.json
 countriesParser.js
