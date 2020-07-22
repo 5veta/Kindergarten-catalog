@@ -76,6 +76,7 @@
   },
   "jest": {
     "setupFiles":["./__tests__/global.js"],
-    "modulePathIgnorePatterns": ["global.js"]
+    "modulePathIgnorePatterns": ["global.js"],
+    "moduleNameMapper": {"\\.(scss)$": "<rootDir>/node_modules/jest-css-modules"}
   }
 }
