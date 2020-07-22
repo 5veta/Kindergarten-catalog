@@ -75,5 +75,10 @@
     "redux-thunk": "2.2.0",
     "url-loader": "^3.0.0",
     "uuid": "3.1.0"
+  },
+  "jest": {
+    "setupFiles":["./__tests__/global.js"],
+    "modulePathIgnorePatterns": ["global.js"],
+    "moduleNameMapper": {"\\.(scss)$": "<rootDir>/node_modules/jest-css-modules"}
   }
 }
