@@ -62,6 +62,7 @@ describe("addKindergarten", ()=>{
         store.dispatch(action);
     });
 
+    it("should add aunique guid id", ()=>expect(kgardens.filter(kg=>kg.kgid===action.kgarden.kgid).length).toBe(0));
     it("should add a new kindergarten", ()=>expect(store.getState().kgardens.length).toBe(3));
-    it("should add aunique guid id", ()=>expect(store.getState().kgardens.filter(kg=>kg.kgid===action.kgarden.kgid).length).toBe(0));
+    
 });
